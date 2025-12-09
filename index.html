@@ -6,13 +6,13 @@
 <title>Sketch Studio</title>
 
 <style>
-/* PALETA (CAMBIO: marrones → blancos) */
+/* PALETA (MARRONES → BLANCO/GRIS) */
 :root {
-  --boy-red: #FFFFFF;   /* Fondo general blanco */
-  --dark-vanilla: #505143; /* Texto oscuro */
-  --grullo: #CCCCCC;    /* Gris suave para bordes */
-  --camo: #FFFFFF;      /* Fondo de secciones blanco */
-  --olive: #505143;     /* Header oscuro */
+  --boy-red: #FFFFFF;      /* Fondo general */
+  --dark-vanilla: #505143; /* Texto principal */
+  --grullo: #CCCCCC;       /* Gris claro para bordes */
+  --camo: #FFFFFF;         /* Fondo de secciones */
+  --olive: #2F3028;        /* Header oscuro elegante */
 }
 
 /* GENERAL */
@@ -36,16 +36,16 @@ header h1 {
   margin: 0;
   letter-spacing: 2px;
   font-weight: 800;
-  color: var(--dark-vanilla);
+  color: #FFFFFF; /* TÍTULO AHORA SÍ SE VE */
 }
 
 header p {
   font-size: 1.2rem;
-  color: var(--dark-vanilla);
+  color: #FFFFFF; /* SUBTÍTULO BLANCO */
   opacity: 0.9;
 }
 
-/* MENU SIN BOTONES */
+/* MENU */
 .menu {
   text-align: center;
   margin: 30px 0;
@@ -123,7 +123,7 @@ header p {
   <p>Arte, diseño y estilo propio</p>
 </header>
 
-<!-- MENU SOLO TEXTO -->
+<!-- MENU -->
 <div class="menu">
   <span onclick="toggle('about')">Sobre mí</span>
   <span onclick="toggle('gallery')">Galería</span>
@@ -138,7 +138,6 @@ header p {
 <div id="gallery" class="section">
   <p>Mira mis ilustraciones destacadas:</p>
 
-  <!-- CARRUSEL DENTRO DE GALERÍA -->
   <div class="carousel">
     <img src="images/art1.jpg" class="active">
     <img src="images/art2.jpg">
