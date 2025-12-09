@@ -3,51 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sker Estudio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>SKER ESTUDIO</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Arial";
+            background: #f7f7f7;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin-top: 40px;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            margin-top: 20px;
+        }
+
+        nav button {
+            padding: 12px 25px;
+            background: black;
+            color: white;
+            border: none;
+            margin: 5px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        nav button:hover {
+            background: #333;
+        }
+
+        section {
+            display: none;
+            padding: 40px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        /* Sección visible por defecto */
+        #galeria { display: block; }
+
+        /* -------- CARRUSEL -------- */
+        .carousel {
+            position: relative;
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .carousel img {
+            width: 100%;
+            display: none;
+        }
+
+        .carousel img.active {
+            display: block;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 40px;
+            color: white;
+            background: rgba(0,0,0,0.4);
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .left { left: 15px; }
+        .right { right: 15px; }
+
+    </style>
+
 </head>
 <body>
 
-    <!-- HEADER -->
-    <header>
-        <h1>SKER ESTUDIO</h1>
-        <nav>
-            <button class="nav-btn" onclick="showSection('galeria')">Galería</button>
-            <button class="nav-btn" onclick="showSection('sobre')">Sobre Mí</button>
-            <button class="nav-btn" onclick="showSection('contacto')">Contáctame</button>
-        </nav>
-    </header>
+    <h1>SKER ESTUDIO</h1>
 
-    <!-- CONTENEDOR DE SECCIONES -->
-    <main>
+    <nav>
+        <button onclick="mostrar('galeria')">Galería</button>
+        <button onclick="mostrar('sobre')">Sobre mí</button>
+        <button onclick="mostrar('contacto')">Contáctame</button>
+    </nav>
 
-        <!-- GALERÍA -->
-        <section id="galeria" class="content-section hidden">
-            <h2>Galería</h2>
+    <!-- GALERÍA -->
+    <section id="galeria">
+        <h2>Galería</h2>
 
-            <div class="carousel">
-                <img class="small-img" src="img1.jpg" onclick="moveToCenter(this)">
-                <img class="center-img" src="img2.jpg" onclick="moveToCenter(this)">
-                <img class="small-img" src="img3.jpg" onclick="moveToCenter(this)">
-            </div>
+        <div class="carousel">
+            <span class="arrow left" onclick="cambiar(-1)">❮</span>
+            <span class="arrow right" onclick="cambiar(1)">❯</span>
 
-        </section>
+            <img src="https://picsum.photos/800/400?1" class="active">
+            <img src="https://picsum.photos/800/400?2">
+            <img src="https://picsum.photos/800/400?3">
+        </div>
+    </section>
 
-        <!-- SOBRE MI -->
-        <section id="sobre" class="content-section hidden">
-            <h2>Sobre mí</h2>
-            <p>Esta sección está aún en construcción.</p>
-        </section>
+    <!-- SOBRE MI -->
+    <section id="sobre">
+        <h2>Sobre mí</h2>
+        <p>Hola, soy el artista detrás de SKER ESTUDIO. Estoy trabajando en esta sección.</p>
+    </section>
 
-        <!-- CONTACTO -->
-        <section id="contacto" class="content-section hidden">
-            <h2>Contáctame</h2>
-            <p>Correo: ejemplo@correo.com</p>
-        </section>
+    <!-- CONTACTO -->
+    <section id="contacto">
+        <h2>Contáctame</h2>
+        <p>Correo: ejemplo@correo.com</p>
+    </section>
 
-    </main>
+    <script>
+        function mostrar(id) {
+            document.querySelectorAll("section").forEach(s => s.style.display = "none");
+            document.getElementById(id).style.display = "block";
+        }
 
-<script src="script.js"></script>
+        let index = 0;
+        const imgs = document.querySelectorAll(".carousel img");
+
+        function cambiar(dir) {
+            imgs[index].classList.remove("active");
+            index = (index + dir + imgs.length) % imgs.length;
+            imgs[index].classList.add("active");
+        }
+    </script>
+
 </body>
 </html>
 
