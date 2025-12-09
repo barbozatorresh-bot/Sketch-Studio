@@ -7,23 +7,44 @@
 
     <style>
         body {
-            background: #fafafa;
-            font-family: Arial;
+            background: #f4f4f4;
+            font-family: Arial, sans-serif;
             text-align: center;
-            padding-top: 40px;
+            padding: 30px;
         }
 
-        .carousel {
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        /* Imagen del centro */
+        .main-image {
+            width: 330px;
+            height: 330px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: 0.3s ease;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        .main-image.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Miniaturas */
+        .thumbnails {
+            margin-top: 35px;
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 25px;
-            margin-top: 40px;
+            gap: 20px;
         }
 
-        .carousel img {
-            width: 120px;
-            height: 120px;
+        .thumbnails img {
+            width: 110px;
+            height: 110px;
             object-fit: cover;
             border-radius: 10px;
             cursor: pointer;
@@ -31,58 +52,44 @@
             transition: 0.25s ease;
         }
 
-        .carousel img.big {
-            width: 260px;
-            height: 260px;
+        .thumbnails img:hover {
             opacity: 1;
+            transform: scale(1.05);
         }
     </style>
 </head>
 <body>
 
     <h1>Sketch Studio</h1>
-    <p>Galería simple</p>
+    <p>Galería minimalista</p>
 
-    <div class="carousel" id="car">
-        <img src="images/art1.jpg" class="big">
+    <!-- Imagen principal -->
+    <img id="mainImg" src="images/art1.jpg" class="main-image show">
+
+    <!-- Miniaturas -->
+    <div class="thumbnails">
+        <img src="images/art1.jpg">
         <img src="images/art2.jpg">
         <img src="images/art3.jpg">
     </div>
 
     <script>
-        const car = document.getElementById("car");
+        const mainImg = document.getElementById("mainImg");
+        const thumbs = document.querySelectorAll(".thumbnails img");
 
-        car.addEventListener("click", e => {
-            if (e.target.tagName !== "IMG") return;
-
-            const images = Array.from(car.children);
-
-            // Reordenar: la imagen clickeada va al centro (posición 1)
-            const clicked = e.target;
-            const newOrder = [];
-
-            const i = images.indexOf(clicked);
-
-            if (i === 0) {
-                newOrder.push(images[1], clicked, images[2]);
-            } else if (i === 1) {
-                return; // ya está al centro
-            } else if (i === 2) {
-                newOrder.push(images[0], clicked, images[1]);
-            }
-
-            // Limpiar clases
-            images.forEach(img => img.classList.remove("big"));
-
-            // Aplicar clase "big" al del medio
-            newOrder[1].classList.add("big");
-
-            // Meter nuevos en el carrusel
-            car.innerHTML = "";
-            newOrder.forEach(img => car.appendChild(img));
+        thumbs.forEach(img => {
+            img.addEventListener("click", () => {
+                // animación suave
+                mainImg.classList.remove("show");
+                setTimeout(() => {
+                    mainImg.src = img.src;
+                    mainImg.classList.add("show");
+                }, 200);
+            });
         });
     </script>
 
 </body>
 </html>
+
 
