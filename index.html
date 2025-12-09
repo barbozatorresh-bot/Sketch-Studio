@@ -23,69 +23,88 @@
             background-color: var(--dark-vanilla);
         }
 
-        /* ⭐ CABECERA VINTAGE */
+        /* ⭐ MENÚ SUPERIOR */
+        nav {
+            background: var(--olive-drab);
+            padding: 12px 0;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+        }
+
+        nav ul li {
+            display: inline-block;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark-vanilla);
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background: var(--boy-red);
+            color: white;
+        }
+
+        /* ⭐ CABECERA */
         header {
             text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(135deg, var(--dark-vanilla), var(--grullo), var(--camouflage));
-            border-bottom: 4px solid var(--boy-red);
-            box-shadow: 0 4px 12px rgba(80, 81, 67, 0.3);
+            padding: 70px 20px;
         }
 
         header h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin: 0;
             color: var(--boy-red);
-            letter-spacing: 3px;
-            font-weight: bold;
-            text-shadow: 0px 3px 4px rgba(0,0,0,0.2);
+            text-shadow: 0px 3px 4px rgba(0,0,0,0.25);
         }
 
         header p {
             font-size: 1.3rem;
-            margin-top: 10px;
+            margin-top: 15px;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            color: var(--olive-drab);
         }
 
-        /* ⭐ BOTONES VINTAGE */
-        .center {
-            text-align: center;
-            margin: 30px 0;
-        }
-
-        .btn {
-            padding: 12px 28px;
-            background: var(--boy-red);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            letter-spacing: 1px;
-            transition: 0.3s ease;
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.25);
-        }
-
-        .btn:hover {
-            transform: scale(1.06);
-            background: var(--olive-drab);
-        }
-
-        /* ⭐ GALERÍA VINTAGE */
-        .carousel-container {
-            width: 90%;
-            max-width: 650px;
-            margin: 40px auto;
+        /* ⭐ SECCIONES */
+        section {
             display: none;
+            padding: 50px 20px;
+            max-width: 900px;
+            margin: auto;
             animation: fadeIn 0.7s ease;
+        }
+
+        .visible {
+            display: block;
         }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ⭐ CARRUSEL */
+        .carousel-container {
+            width: 90%;
+            max-width: 650px;
+            margin: 40px auto;
         }
 
         .carousel {
@@ -114,61 +133,108 @@
             to   { opacity: 1; }
         }
 
+        .btn {
+            padding: 10px 20px;
+            background: var(--boy-red);
+            color: white;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 10px;
+            transition: 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background: var(--olive-drab);
+        }
+
     </style>
 </head>
-
 <body>
 
-    <!-- PRESENTACIÓN -->
-    <header>
-        <h1>Sketch Studio</h1>
-        <p>Bienvenido a mi mundo artístico. Aquí encontrarás mis dibujos, ideas y proyectos especiales hechos con cariño.</p>
-    </header>
+    <!-- MENÚ -->
+    <nav>
+        <ul>
+            <li><a href="#" onclick="mostrar('inicio')">Inicio</a></li>
+            <li><a href="#" onclick="mostrar('sobre')">Sobre mí</a></li>
+            <li><a href="#" onclick="mostrar('galeria')">Galería</a></li>
+            <li><a href="#" onclick="mostrar('tienda')">Tienda</a></li>
+            <li><a href="#" onclick="mostrar('comisiones')">Comisiones</a></li>
+        </ul>
+    </nav>
 
-    <!-- BOTÓN PARA ABRIR GALERÍA -->
-    <div class="center">
-        <button class="btn" onclick="mostrarGaleria()">Ver Galería</button>
-    </div>
-
-    <!-- GALERÍA -->
-    <section id="galeria" class="carousel-container">
-
-        <div class="carousel">
-            <img src="art1.jpg" class="active">
-            <img src="art2.jpg">
-            <img src="art3.jpg">
-        </div>
-
-        <div class="center">
-            <button class="btn" onclick="prev()">Anterior</button>
-            <button class="btn" onclick="next()">Siguiente</button>
-        </div>
-
+    <!-- SECCIÓN INICIO -->
+    <section id="inicio" class="visible">
+        <header>
+            <h1>Sketch Studio</h1>
+            <p>Bienvenido a mi mundo artístico. Aquí encontrarás mis dibujos, ideas, comisiones y más.</p>
+        </header>
     </section>
 
+    <!-- SOBRE MÍ -->
+    <section id="sobre">
+        <h2>Sobre mí</h2>
+        <p>Soy una artista digital apasionada por crear mundos, personajes y conceptos. Mi estilo combina lo vintage con lo surrealista.</p>
+    </section>
+
+    <!-- GALERÍA -->
+    <section id="galeria">
+        <h2>Galería</h2>
+
+        <div class="carousel-container">
+            <div class="carousel">
+                <img src="art1.jpg" class="active">
+                <img src="art2.jpg">
+                <img src="art3.jpg">
+            </div>
+
+            <div style="text-align:center;">
+                <button class="btn" onclick="prev()">Anterior</button>
+                <button class="btn" onclick="next()">Siguiente</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIENDA -->
+    <section id="tienda">
+        <h2>Tienda</h2>
+        <p>Aquí podrás ver mis productos y prints próximamente.</p>
+    </section>
+
+    <!-- COMISIONES -->
+    <section id="comisiones">
+        <h2>Comisiones</h2>
+        <p>Abro comisiones de retratos, personajes, banners y más. Contáctame para precios y disponibilidad.</p>
+    </section>
+
+
 <script>
-    // Mostrar galería con animación
-    function mostrarGaleria() {
-        document.getElementById("galeria").style.display = "block";
-        window.scrollTo({ top: 500, behavior: "smooth" });
+    // MOSTRAR SECCIONES
+    function mostrar(id) {
+        document.querySelectorAll("section").forEach(sec => sec.classList.remove("visible"));
+        document.getElementById(id).classList.add("visible");
+        window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    // Carrusel
-    const images = document.querySelectorAll(".carousel img");
-    let index = 0;
+    // CARRUSEL
+    const imgs = document.querySelectorAll(".carousel img");
+    let i = 0;
 
     function next() {
-        images[index].classList.remove("active");
-        index = (index + 1) % images.length;
-        images[index].classList.add("active");
+        imgs[i].classList.remove("active");
+        i = (i + 1) % imgs.length;
+        imgs[i].classList.add("active");
     }
 
     function prev() {
-        images[index].classList.remove("active");
-        index = (index - 1 + images.length) % images.length;
-        images[index].classList.add("active");
+        imgs[i].classList.remove("active");
+        i = (i - 1 + imgs.length) % imgs.length;
+        imgs[i].classList.add("active");
     }
 </script>
 
 </body>
 </html>
+
