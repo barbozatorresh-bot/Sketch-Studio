@@ -7,59 +7,82 @@
 
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: #f6f6f6;
+            background: #fafafa;
+            font-family: Arial;
             text-align: center;
-            padding: 20px;
+            padding-top: 40px;
         }
 
-        .gallery {
+        .carousel {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 15px;
+            gap: 25px;
             margin-top: 40px;
         }
 
-        .gallery img {
+        .carousel img {
             width: 120px;
             height: 120px;
             object-fit: cover;
             border-radius: 10px;
             cursor: pointer;
             opacity: 0.7;
-            transition: all 0.3s ease;
+            transition: 0.25s ease;
         }
 
-        .gallery img.active {
+        .carousel img.big {
             width: 260px;
             height: 260px;
             opacity: 1;
-            transform: scale(1.05);
         }
     </style>
 </head>
 <body>
 
     <h1>Sketch Studio</h1>
-    <p>Galería sencilla con imagen principal</p>
+    <p>Galería simple</p>
 
-    <div class="gallery">
-        <img src="images/art1.jpg" class="active">
+    <div class="carousel" id="car">
+        <img src="images/art1.jpg" class="big">
         <img src="images/art2.jpg">
         <img src="images/art3.jpg">
     </div>
 
     <script>
-        const images = document.querySelectorAll(".gallery img");
+        const car = document.getElementById("car");
 
-        images.forEach(img => {
-            img.addEventListener("click", () => {
-                images.forEach(i => i.classList.remove("active"));
-                img.classList.add("active");
-            });
+        car.addEventListener("click", e => {
+            if (e.target.tagName !== "IMG") return;
+
+            const images = Array.from(car.children);
+
+            // Reordenar: la imagen clickeada va al centro (posición 1)
+            const clicked = e.target;
+            const newOrder = [];
+
+            const i = images.indexOf(clicked);
+
+            if (i === 0) {
+                newOrder.push(images[1], clicked, images[2]);
+            } else if (i === 1) {
+                return; // ya está al centro
+            } else if (i === 2) {
+                newOrder.push(images[0], clicked, images[1]);
+            }
+
+            // Limpiar clases
+            images.forEach(img => img.classList.remove("big"));
+
+            // Aplicar clase "big" al del medio
+            newOrder[1].classList.add("big");
+
+            // Meter nuevos en el carrusel
+            car.innerHTML = "";
+            newOrder.forEach(img => car.appendChild(img));
         });
     </script>
 
 </body>
 </html>
+
