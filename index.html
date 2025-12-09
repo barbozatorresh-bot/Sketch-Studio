@@ -1,190 +1,201 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Sketch Studio</title>
 
 <style>
-    /* 🎨 PALETA */
-    :root {
-        --pine: #2C3418;
-        --morning-blue: #94A59C;
-        --bone: #DDDFC2;
-        --olivine: #97AC82;
-        --russian-green: #688465;
-    }
+/* ===================== */
+/* PALETA DE COLORES     */
+/* ===================== */
+:root {
+  --boy-red: #6A6352;
+  --dark-vanilla: #D5CCAB;
+  --grullo: #A3A289;
+  --camouflage: #878568;
+  --olive-drab: #505143;
+}
 
-    body {
-        margin: 0;
-        font-family: "Poppins", sans-serif;
-        background: var(--pine);
-        color: var(--bone);
-    }
+/* ===================== */
+/* RESET Y FUENTE        */
+/* ===================== */
+body {
+  margin: 0;
+  background-color: var(--boy-red);
+  font-family: "Poppins", sans-serif;
+  color: var(--dark-vanilla);
+}
 
-    /* 🔹 HEADER */
-    header {
-        padding: 30px;
-        text-align: center;
-        background: var(--russian-green);
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    }
+/* ===================== */
+/* HEADER                */
+/* ===================== */
+header {
+  text-align: center;
+  padding: 70px 30px;
+  background-color: var(--olive-drab);
+  color: var(--dark-vanilla);
+  border-bottom: 4px solid var(--grullo);
+  animation: fadeIn 1s ease-in-out;
+}
 
-    header h1 {
-        margin: 0;
-        font-size: 3.2rem;
-        color: var(--bone);
-        text-shadow: 0px 0px 12px rgba(255,255,255,0.3);
-        letter-spacing: 3px;
-    }
+header h1 {
+  font-size: 4rem;
+  letter-spacing: 2px;
+  margin: 0;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--dark-vanilla);
+  animation: slideDown 1s ease-out;
+}
 
-    /* 🔹 MENÚ */
-    nav {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-        margin-top: 15px;
-    }
+header p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-top: 10px;
+}
 
-    nav button {
-        background: var(--morning-blue);
-        border: none;
-        padding: 12px 20px;
-        border-radius: 8px;
-        cursor: pointer;
-        color: var(--pine);
-        font-weight: bold;
-        transition: 0.3s ease;
-    }
+/* ===================== */
+/* BOTONES               */
+/* ===================== */
+.buttons {
+  text-align: center;
+  margin: 40px 0;
+}
 
-    nav button:hover {
-        transform: scale(1.07);
-        background: var(--olivine);
-    }
+.buttons button {
+  background-color: var(--grullo);
+  border: none;
+  padding: 16px 30px;
+  margin: 10px;
+  border-radius: 14px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: var(--olive-drab);
+  font-weight: 600;
+  transition: 0.35s ease-in-out;
+}
 
-    /* 🔹 SECCIONES OCULTAS */
-    .section {
-        display: none;
-        opacity: 0;
-        background: var(--russian-green);
-        padding: 25px;
-        width: 85%;
-        margin: 20px auto;
-        border-radius: 12px;
-        box-shadow: 0 0 15px rgba(0,0,0,0.3);
-        transform: translateY(-15px);
-        animation: show 0.5s forwards;
-    }
+.buttons button:hover {
+  background-color: var(--dark-vanilla);
+  transform: scale(1.07);
+}
 
-    /* ✨ ANIMACIÓN LINDA */
-    @keyframes show {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
+/* ===================== */
+/* SECCIONES DESPLEGABLES*/
+/* ===================== */
+.section {
+  width: 80%;
+  margin: auto;
+  background-color: var(--camouflage);
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 20px;
+  display: none;
+  animation: fadeIn 0.6s ease-in-out;
+}
 
-    /* 🔹 CARRUSEL */
-    .carousel {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 15px;
-        margin-top: 20px;
-    }
+.section p {
+  margin: 0;
+}
 
-    .thumb {
-        width: 100px;
-        height: 100px;
-        border-radius: 10px;
-        object-fit: cover;
-        cursor: pointer;
-        opacity: 0.6;
-        transition: 0.3s;
-    }
+/* ===================== */
+/* CARROUSEL             */
+/* ===================== */
+.carousel {
+  width: 85%;
+  margin: 50px auto;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 3px solid var(--dark-vanilla);
+  box-shadow: 0 0 15px #0004;
+}
 
-    .thumb:hover {
-        transform: scale(1.05);
-        opacity: 1;
-    }
+.carousel img {
+  width: 100%;
+  display: none;
+  animation: fadeIn 1s;
+}
 
-    .main-img {
-        width: 380px;
-        height: 380px;
-        border-radius: 14px;
-        border: 4px solid var(--bone);
-        object-fit: cover;
-        transition: 0.3s;
-    }
+.carousel img.active {
+  display: block;
+}
+
+/* ===================== */
+/* ANIMACIONES           */
+/* ===================== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
 </style>
-
 </head>
+
 <body>
 
 <header>
-    <h1>SKETCH STUDIO</h1>
-
-    <nav>
-        <button onclick="openSection('about')">Sobre mí</button>
-        <button onclick="openSection('galeria')">Galería</button>
-        <button onclick="openSection('tienda')">Tienda</button>
-        <button onclick="openSection('comisiones')">Comisiones</button>
-        <button onclick="openSection('contacto')">Contacto</button>
-    </nav>
+  <h1>SKETCH STUDIO</h1>
+  <p>Diseño artístico, moderno y con estilo</p>
 </header>
 
-<!-- 🔹 SECCIÓN SOBRE MÍ -->
+<div class="buttons">
+  <button onclick="toggleSection('about')">Sobre Nosotros</button>
+  <button onclick="toggleSection('services')">Servicios</button>
+  <button onclick="toggleSection('contact')">Contacto</button>
+  <button onclick="toggleSection('gallery')">Galería</button>
+</div>
+
+<!-- Secciones -->
 <div id="about" class="section">
-    <h2>Sobre mí</h2>
-    <p>Hola! Soy la artista detrás de Sketch Studio. Aquí comparto mis ilustraciones,
-       proyectos, merch y trabajos personalizados ✨</p>
+  <p>Somos un estudio creativo especializado en ilustración y diseño digital.</p>
 </div>
 
-<!-- 🔹 SECCIÓN GALERÍA CON CARRUSEL -->
-<div id="galeria" class="section">
-    <h2>Galería</h2>
-    <div class="carousel">
-        <img id="main" class="main-img" src="images/art1.jpg">
-
-        <div>
-            <img class="thumb" src="images/art1.jpg" onclick="changeImg('images/art1.jpg')">
-            <img class="thumb" src="images/art2.jpg" onclick="changeImg('images/art2.jpg')">
-            <img class="thumb" src="images/art3.jpg" onclick="changeImg('images/art3.jpg')">
-        </div>
-    </div>
+<div id="services" class="section">
+  <p>Ofrecemos ilustración, diseño gráfico, identidad visual y más.</p>
 </div>
 
-<!-- 🔹 OTRAS SECCIONES -->
-<div id="tienda" class="section">
-    <h2>Tienda</h2>
-    <p>Aquí pondremos tus pines, llaveros, stickers, sketchbooks y demás merch.</p>
+<div id="contact" class="section">
+  <p>Email: sketchstudio@gmail.com<br>Instagram: @sketchstudio</p>
 </div>
 
-<div id="comisiones" class="section">
-    <h2>Comisiones</h2>
-    <p>Explica tus tipos de comisiones, precios, estilos, tiempos, reglas, etc.</p>
+<div id="gallery" class="section">
+  <p>Galería destacada:</p>
 </div>
 
-<div id="contacto" class="section">
-    <h2>Contacto</h2>
-    <p>Instagram: @tuperfil</p>
-    <p>Email: tuemail@gmail.com</p>
+<!-- Carrusel -->
+<div class="carousel">
+  <img src="https://picsum.photos/900/400?1" class="active">
+  <img src="https://picsum.photos/900/400?2">
+  <img src="https://picsum.photos/900/400?3">
 </div>
 
 <script>
-    // ABRIR SECCIONES CON ANIMACIÓN LINDA
-    function openSection(id) {
-        document.querySelectorAll('.section').forEach(sec => sec.style.display = "none");
+/* ===================== */
+/* DESPLEGAR SECCIONES   */
+/* ===================== */
+function toggleSection(id) {
+  const section = document.getElementById(id);
 
-        const active = document.getElementById(id);
-        active.style.display = "block";
-        active.style.animation = "show 0.5s forwards";
-    }
+  section.style.display =
+    section.style.display === "block" ? "none" : "block";
+}
 
-    // CARRUSEL SIMPLE Y LINDO
-    function changeImg(img) {
-        document.getElementById("main").src = img;
-    }
+/* ===================== */
+/* CARROUSEL AUTOMÁTICO  */
+/* ===================== */
+let index = 0;
+const images = document.querySelectorAll(".carousel img");
+
+setInterval(() => {
+  images[index].classList.remove("active");
+  index = (index + 1) % images.length;
+  images[index].classList.add("active");
+}, 3000);
 </script>
 
 </body>
