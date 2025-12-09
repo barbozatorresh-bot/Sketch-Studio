@@ -6,88 +6,138 @@
     <title>Sketch Studio</title>
 
     <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
         body {
             background: #f4f4f4;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 30px;
+            color: #222;
+            transition: 0.3s;
         }
 
-        h1 {
-            margin-bottom: 10px;
-        }
-
-        /* Imagen del centro */
-        .main-image {
-            width: 330px;
-            height: 330px;
-            object-fit: cover;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: 0.3s ease;
-            opacity: 0;
-            transform: scale(0.9);
-        }
-
-        .main-image.show {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        /* Miniaturas */
-        .thumbnails {
-            margin-top: 35px;
+        /* NAVBAR */
+        header {
+            width: 100%;
+            background: #111;
+            color: white;
+            padding: 15px 40px;
             display: flex;
-            justify-content: center;
-            gap: 20px;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
-        .thumbnails img {
-            width: 110px;
-            height: 110px;
-            object-fit: cover;
-            border-radius: 10px;
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            color: #eee;
+            margin-left: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffce4b;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            margin-top: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 10%;
+            gap: 50px;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .hero-text p {
+            margin: 15px 0;
+            max-width: 450px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .btn {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 12px 25px;
+            background: #4a77ff;
+            color: white;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: 0.3s;
+            border: none;
             cursor: pointer;
-            opacity: 0.7;
-            transition: 0.25s ease;
         }
 
-        .thumbnails img:hover {
-            opacity: 1;
-            transform: scale(1.05);
+        .btn:hover {
+            background: #2f54d6;
         }
+
+        /* FOTO */
+        .hero img {
+            width: 260px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+
+        .hero img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+        }
+
     </style>
 </head>
+
 <body>
 
-    <h1>Sketch Studio</h1>
-    <p>Galería minimalista</p>
+    <!-- NAV -->
+    <header>
+        <div class="logo">Sketch Studio</div>
 
-    <!-- Imagen principal -->
-    <img id="mainImg" src="images/art1.jpg" class="main-image show">
+        <nav>
+            <a href="#">Inicio</a>
+            <a href="#">Galería</a>
+            <a href="#">Tienda</a>
+            <a href="#">Comisiones</a>
+            <a href="#">Contacto</a>
+        </nav>
+    </header>
 
-    <!-- Miniaturas -->
-    <div class="thumbnails">
-        <img src="images/art1.jpg">
-        <img src="images/art2.jpg">
-        <img src="images/art3.jpg">
-    </div>
+    <!-- HERO PRESENTACIÓN -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Hola, soy <span style="color:#4a77ff;">Heydi</span></h1>
+            <p>
+                Artista digital y creadora de contenido visual.  
+                Me encanta ilustrar, diseñar personajes y explorar nuevos estilos.
+                Aquí encontrarás mis dibujos, mis comisiones abiertas y mis proyectos.
+            </p>
 
-    <script>
-        const mainImg = document.getElementById("mainImg");
-        const thumbs = document.querySelectorAll(".thumbnails img");
+            <button class="btn">Ver mi trabajo</button>
+        </div>
 
-        thumbs.forEach(img => {
-            img.addEventListener("click", () => {
-                // animación suave
-                mainImg.classList.remove("show");
-                setTimeout(() => {
-                    mainImg.src = img.src;
-                    mainImg.classList.add("show");
-                }, 200);
-            });
-        });
-    </script>
+        <img src="images/art1.jpg" alt="Mi foto">
+    </section>
 
 </body>
 </html>
