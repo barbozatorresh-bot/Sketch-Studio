@@ -2,157 +2,190 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sketch Studio</title>
+
 <style>
-    /* PALETA */
+    /* 🎨 PALETA */
     :root {
-        --cafe: #4C3D19;
-        --kombu: #354024;
-        --moss: #889063;
-        --tan: #CFBB99;
-        --bone: #E5D7C4;
+        --pine: #2C3418;
+        --morning-blue: #94A59C;
+        --bone: #DDDFC2;
+        --olivine: #97AC82;
+        --russian-green: #688465;
     }
 
     body {
         margin: 0;
         font-family: "Poppins", sans-serif;
-        background-color: var(--bone);
-        color: var(--kombu);
+        background: var(--pine);
+        color: var(--bone);
     }
 
-    /* HEADER */
+    /* 🔹 HEADER */
     header {
-        background-color: var(--cafe);
-        color: var(--tan);
-        padding: 40px 20px;
+        padding: 30px;
         text-align: center;
-        font-size: 42px;
-        font-weight: 800;
-        letter-spacing: 2px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        background: var(--russian-green);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
 
-    /* MENÚ */
+    header h1 {
+        margin: 0;
+        font-size: 3.2rem;
+        color: var(--bone);
+        text-shadow: 0px 0px 12px rgba(255,255,255,0.3);
+        letter-spacing: 3px;
+    }
+
+    /* 🔹 MENÚ */
     nav {
-        background-color: var(--kombu);
-        padding: 10px 0;
         display: flex;
         justify-content: center;
-        gap: 40px;
+        gap: 15px;
+        margin-top: 15px;
     }
 
     nav button {
-        background-color: var(--moss);
-        color: var(--bone);
+        background: var(--morning-blue);
         border: none;
-        padding: 12px 25px;
-        font-size: 18px;
-        border-radius: 10px;
+        padding: 12px 20px;
+        border-radius: 8px;
         cursor: pointer;
-        transition: 0.3s;
+        color: var(--pine);
+        font-weight: bold;
+        transition: 0.3s ease;
     }
 
     nav button:hover {
-        background-color: var(--tan);
-        color: var(--kombu);
+        transform: scale(1.07);
+        background: var(--olivine);
     }
 
-    /* CONTENIDO */
+    /* 🔹 SECCIONES OCULTAS */
     .section {
         display: none;
-        padding: 40px;
-        text-align: center;
-        animation: fade 0.5s ease-in-out;
+        opacity: 0;
+        background: var(--russian-green);
+        padding: 25px;
+        width: 85%;
+        margin: 20px auto;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.3);
+        transform: translateY(-15px);
+        animation: show 0.5s forwards;
     }
 
-    @keyframes fade {
-        from { opacity: 0; }
-        to { opacity: 1; }
+    /* ✨ ANIMACIÓN LINDA */
+    @keyframes show {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
-    /* CARRUSEL */
+    /* 🔹 CARRUSEL */
     .carousel {
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 15px;
-        padding: 40px 0;
+        margin-top: 20px;
     }
 
-    .carousel img {
-        width: 180px;
-        height: 180px;
+    .thumb {
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
         object-fit: cover;
-        border-radius: 12px;
-        transition: 0.3s;
         cursor: pointer;
-        border: 4px solid var(--kombu);
+        opacity: 0.6;
+        transition: 0.3s;
     }
 
-    .carousel img.active {
-        width: 290px;
-        height: 290px;
-        border: 6px solid var(--tan);
-        transform: scale(1.1);
+    .thumb:hover {
+        transform: scale(1.05);
+        opacity: 1;
     }
 
+    .main-img {
+        width: 380px;
+        height: 380px;
+        border-radius: 14px;
+        border: 4px solid var(--bone);
+        object-fit: cover;
+        transition: 0.3s;
+    }
 </style>
+
 </head>
 <body>
 
-<header>Sketch Studio</header>
+<header>
+    <h1>SKETCH STUDIO</h1>
 
-<nav>
-    <button onclick="showSection('inicio')">Inicio</button>
-    <button onclick="showSection('galeria')">Galería</button>
-    <button onclick="showSection('tienda')">Tienda</button>
-    <button onclick="showSection('comisiones')">Comisiones</button>
-</nav>
+    <nav>
+        <button onclick="openSection('about')">Sobre mí</button>
+        <button onclick="openSection('galeria')">Galería</button>
+        <button onclick="openSection('tienda')">Tienda</button>
+        <button onclick="openSection('comisiones')">Comisiones</button>
+        <button onclick="openSection('contacto')">Contacto</button>
+    </nav>
+</header>
 
-<!-- SECCIÓN INICIO -->
-<div id="inicio" class="section" style="display:block;">
-    <h2>Bienvenid@ a Sketch Studio</h2>
-    <p>Artista digital, creadora de personajes, y amante de los aliens 👽✨</p>
+<!-- 🔹 SECCIÓN SOBRE MÍ -->
+<div id="about" class="section">
+    <h2>Sobre mí</h2>
+    <p>Hola! Soy la artista detrás de Sketch Studio. Aquí comparto mis ilustraciones,
+       proyectos, merch y trabajos personalizados ✨</p>
 </div>
 
-<!-- SECCIÓN GALERÍA -->
+<!-- 🔹 SECCIÓN GALERÍA CON CARRUSEL -->
 <div id="galeria" class="section">
-    <h2>Galería de Arte</h2>
-
+    <h2>Galería</h2>
     <div class="carousel">
-        <img src="images/art1.jpg" class="active" onclick="selectImage(this)">
-        <img src="images/art2.jpg" onclick="selectImage(this)">
-        <img src="images/art3.jpg" onclick="selectImage(this)">
+        <img id="main" class="main-img" src="images/art1.jpg">
+
+        <div>
+            <img class="thumb" src="images/art1.jpg" onclick="changeImg('images/art1.jpg')">
+            <img class="thumb" src="images/art2.jpg" onclick="changeImg('images/art2.jpg')">
+            <img class="thumb" src="images/art3.jpg" onclick="changeImg('images/art3.jpg')">
+        </div>
     </div>
 </div>
 
-<!-- SECCIÓN TIENDA -->
+<!-- 🔹 OTRAS SECCIONES -->
 <div id="tienda" class="section">
     <h2>Tienda</h2>
-    <p>Próximamente podrás comprar stickers, prints y más 👀✨</p>
+    <p>Aquí pondremos tus pines, llaveros, stickers, sketchbooks y demás merch.</p>
 </div>
 
-<!-- SECCIÓN COMISIONES -->
 <div id="comisiones" class="section">
     <h2>Comisiones</h2>
-    <p>Encárgame tu dibujo personalizado 💛  
-    Muy pronto abriré slots ✨</p>
+    <p>Explica tus tipos de comisiones, precios, estilos, tiempos, reglas, etc.</p>
+</div>
+
+<div id="contacto" class="section">
+    <h2>Contacto</h2>
+    <p>Instagram: @tuperfil</p>
+    <p>Email: tuemail@gmail.com</p>
 </div>
 
 <script>
-    // mostrar secciones
-    function showSection(id) {
-        document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
-        document.getElementById(id).style.display = 'block';
+    // ABRIR SECCIONES CON ANIMACIÓN LINDA
+    function openSection(id) {
+        document.querySelectorAll('.section').forEach(sec => sec.style.display = "none");
+
+        const active = document.getElementById(id);
+        active.style.display = "block";
+        active.style.animation = "show 0.5s forwards";
     }
 
-    // carrusel simple
-    function selectImage(img) {
-        document.querySelectorAll(".carousel img").forEach(i => i.classList.remove("active"));
-        img.classList.add("active");
+    // CARRUSEL SIMPLE Y LINDO
+    function changeImg(img) {
+        document.getElementById("main").src = img;
     }
 </script>
 
 </body>
 </html>
-
