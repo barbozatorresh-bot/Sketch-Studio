@@ -1,88 +1,202 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Galería Vintage</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sketch Studio</title>
 
 <style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Georgia', serif;
-        background-color: #DDDFC2; /* Bone */
-        color: #2C3418; /* Pine Tree */
-    }
+/* ===================== */
+/* PALETA DE COLORES     */
+/* ===================== */
+:root {
+  --boy-red: #6A6352;
+  --dark-vanilla: #D5CCAB;
+  --grullo: #A3A289;
+  --camouflage: #878568;
+  --olive-drab: #505143;
+}
 
-    header {
-        text-align: center;
-        padding: 30px 10px;
-        background-color: #2C3418; /* Pine Tree */
-        color: #DDDFC2; /* Bone */
-        font-size: 32px;
-        letter-spacing: 2px;
-        font-weight: bold;
-        border-bottom: 5px solid #94A59C;
-    }
+/* ===================== */
+/* RESET Y FUENTE        */
+/* ===================== */
+body {
+  margin: 0;
+  background-color: var(--boy-red);
+  font-family: "Poppins", sans-serif;
+  color: var(--dark-vanilla);
+}
 
-    .gallery {
-        max-width: 1000px;
-        padding: 20px;
-        margin: auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
-    }
+/* ===================== */
+/* HEADER                */
+/* ===================== */
+header {
+  text-align: center;
+  padding: 70px 30px;
+  background-color: var(--olive-drab);
+  color: var(--dark-vanilla);
+  border-bottom: 4px solid var(--grullo);
+  animation: fadeIn 1s ease-in-out;
+}
 
-    .item {
-        background-color: #94A59C; /* Morning Blue */
-        padding: 15px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(44, 52, 24, 0.3);
-        transition: transform 0.2s;
-    }
+header h1 {
+  font-size: 4rem;
+  letter-spacing: 2px;
+  margin: 0;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--dark-vanilla);
+  animation: slideDown 1s ease-out;
+}
 
-    .item:hover {
-        transform: scale(1.03);
-    }
+header p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-top: 10px;
+}
 
-    .item img {
-        width: 100%;
-        border-radius: 10px;
-        filter: sepia(35%) contrast(95%) brightness(95%);
-    }
+/* ===================== */
+/* BOTONES               */
+/* ===================== */
+.buttons {
+  text-align: center;
+  margin: 40px 0;
+}
 
-    footer {
-        text-align: center;
-        padding: 20px;
-        background-color: #2C3418;
-        color: #DDDFC2;
-        margin-top: 30px;
-        font-size: 14px;
-    }
+.buttons button {
+  background-color: var(--grullo);
+  border: none;
+  padding: 16px 30px;
+  margin: 10px;
+  border-radius: 14px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: var(--olive-drab);
+  font-weight: 600;
+  transition: 0.35s ease-in-out;
+}
+
+.buttons button:hover {
+  background-color: var(--dark-vanilla);
+  transform: scale(1.07);
+}
+
+/* ===================== */
+/* SECCIONES DESPLEGABLES*/
+/* ===================== */
+.section {
+  width: 80%;
+  margin: auto;
+  background-color: var(--camouflage);
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 20px;
+  display: none;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.section p {
+  margin: 0;
+}
+
+/* ===================== */
+/* CARROUSEL             */
+/* ===================== */
+.carousel {
+  width: 85%;
+  margin: 50px auto;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 3px solid var(--dark-vanilla);
+  box-shadow: 0 0 15px #0004;
+}
+
+.carousel img {
+  width: 100%;
+  display: none;
+  animation: fadeIn 1s;
+}
+
+.carousel img.active {
+  display: block;
+}
+
+/* ===================== */
+/* ANIMACIONES           */
+/* ===================== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
 </style>
-
 </head>
+
 <body>
 
-<header>Galería de Arte – Estilo Vintage</header>
+<header>
+  <h1>SKETCH STUDIO</h1>
+  <p>Diseño artístico, moderno y con estilo</p>
+</header>
 
-<div class="gallery">
-    <div class="item">
-        <img src="art1.jpg" alt="Arte 1">
-    </div>
-    <div class="item">
-        <img src="art2.jpg" alt="Arte 2">
-    </div>
-    <div class="item">
-        <img src="art3.jpg" alt="Arte 3">
-    </div>
+<div class="buttons">
+  <button onclick="toggleSection('about')">Sobre Nosotros</button>
+  <button onclick="toggleSection('services')">Servicios</button>
+  <button onclick="toggleSection('contact')">Contacto</button>
+  <button onclick="toggleSection('gallery')">Galería</button>
 </div>
 
-<footer>
-    © 2025 – Mi galería vintage
-</footer>
+<!-- Secciones -->
+<div id="about" class="section">
+  <p>Somos un estudio creativo especializado en ilustración y diseño digital.</p>
+</div>
+
+<div id="services" class="section">
+  <p>Ofrecemos ilustración, diseño gráfico, identidad visual y más.</p>
+</div>
+
+<div id="contact" class="section">
+  <p>Email: sketchstudio@gmail.com<br>Instagram: @sketchstudio</p>
+</div>
+
+<div id="gallery" class="section">
+  <p>Galería destacada:</p>
+</div>
+
+<!-- Carrusel -->
+<div class="carousel">
+  <img src="https://picsum.photos/900/400?1" class="active">
+  <img src="https://picsum.photos/900/400?2">
+  <img src="https://picsum.photos/900/400?3">
+</div>
+
+<script>
+/* ===================== */
+/* DESPLEGAR SECCIONES   */
+/* ===================== */
+function toggleSection(id) {
+  const section = document.getElementById(id);
+
+  section.style.display =
+    section.style.display === "block" ? "none" : "block";
+}
+
+/* ===================== */
+/* CARROUSEL AUTOMÁTICO  */
+/* ===================== */
+let index = 0;
+const images = document.querySelectorAll(".carousel img");
+
+setInterval(() => {
+  images[index].classList.remove("active");
+  index = (index + 1) % images.length;
+  images[index].classList.add("active");
+}, 3000);
+</script>
 
 </body>
 </html>
-
