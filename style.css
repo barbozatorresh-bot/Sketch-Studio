@@ -1,1 +1,93 @@
+/* PALETA
+CAFÉ NOIR: #4C3D19
+KOMBU GREEN: #354024
+MOSS GREEN: #889063
+TAN: #CFBB99
+BONE: #E5D7C4
+*/
+
+/* GENERAL */
+body {
+    margin: 0;
+    background-color: #354024; /* KOMBU GREEN suave */
+    font-family: 'Georgia', serif;
+    color: #E5D7C4; /* BONE */
+}
+
+/* HEADER */
+header {
+    background-color: #4C3D19; /* CAFÉ NOIR */
+    padding: 25px;
+    text-align: center;
+    color: #E5D7C4;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin: 0;
+    letter-spacing: 5px;
+}
+
+/* NAV */
+nav {
+    margin-top: 15px;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: #CFBB99; /* TAN */
+    font-size: 1.2rem;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav-btn:hover {
+    color: #889063; /* MOSS GREEN */
+}
+
+/* SECCIONES */
+.content-section {
+    padding: 30px;
+    display: none;
+}
+
+.content-section h2 {
+    color: #E5D7C4;
+}
+
+.hidden {
+    display: none;
+}
+
+/* CARRUSEL */
+.carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    gap: 20px;
+}
+
+.carousel img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.4s;
+    opacity: 0.6;
+}
+
+.center-img {
+    width: 250px !important;
+    height: 250px !important;
+    opacity: 1 !important;
+}
+
+.small-img:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
 
