@@ -3,201 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sketch Studio</title>
-
-    <style>
-        /* RESET */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Poppins", sans-serif;
-        }
-
-        body {
-            background: #f4f4f4;
-            color: #222;
-        }
-
-        /* NAVBAR */
-        header {
-            width: 100%;
-            background: #111;
-            color: white;
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-
-        .logo {
-            font-size: 2.4rem;   /* MÁS GRANDE */
-            font-weight: 800;
-            letter-spacing: 2px;
-            color: #ffce4b;
-            text-shadow: 0px 0px 10px rgba(255, 206, 75, 0.6);
-        }
-
-        nav a {
-            color: #eee;
-            margin-left: 30px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1rem;
-        }
-
-        nav a:hover {
-            color: #ffce4b;
-        }
-
-        /* SECCIONES QUE SE OCULTAN */
-        .section {
-            display: none;
-            padding: 60px 10%;
-        }
-
-        /* MOSTRAR */
-        .active {
-            display: block;
-        }
-
-        /* HERO (Inicio) */
-        #inicio {
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-            justify-content: center;
-            align-items: center;
-            min-height: 70vh;
-        }
-
-        .hero-box {
-            background: white;
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            max-width: 850px;
-        }
-
-        h1 {
-            font-size: 3.4rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-        }
-
-        h2 {
-            font-size: 2rem;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-
-        p {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: #444;
-        }
-
-        .btn {
-            padding: 12px 30px;
-            border-radius: 8px;
-            background: #4a77ff;
-            color: white;
-            border: none;
-            margin-top: 20px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-size: 1.1rem;
-        }
-
-        .btn:hover {
-            background: #2f54d6;
-        }
-
-        /* Galería temporal (luego se reemplaza con tu carrusel real) */
-        .galeria-box {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-        }
-
-    </style>
-
+    <title>Sker Estudio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <!-- NAV -->
+    <!-- HEADER -->
     <header>
-        <div class="logo">Sketch Studio</div>
-
+        <h1>SKER ESTUDIO</h1>
         <nav>
-            <a href="#" onclick="showSection('inicio')">Inicio</a>
-            <a href="#" onclick="showSection('galeria')">Galería</a>
-            <a href="#" onclick="showSection('tienda')">Tienda</a>
-            <a href="#" onclick="showSection('comisiones')">Comisiones</a>
-            <a href="#" onclick="showSection('contacto')">Contacto</a>
+            <button class="nav-btn" onclick="showSection('galeria')">Galería</button>
+            <button class="nav-btn" onclick="showSection('sobre')">Sobre Mí</button>
+            <button class="nav-btn" onclick="showSection('contacto')">Contáctame</button>
         </nav>
     </header>
 
-    <!-- SECCIÓN INICIO -->
-    <section id="inicio" class="section active">
-        <div class="hero-box">
-            <h1>Hola, soy <span style="color:#4a77ff;">Heydi</span></h1>
-            <p>
-                Artista digital apasionada por crear ilustraciones y diseños llenos de vida y estilo.  
-                Bienvenid@ a mi espacio creativo.
-            </p>
-            <button class="btn">Conoce mi trabajo</button>
-        </div>
-    </section>
+    <!-- CONTENEDOR DE SECCIONES -->
+    <main>
 
-    <!-- GALERÍA -->
-    <section id="galeria" class="section">
-        <div class="galeria-box">
+        <!-- GALERÍA -->
+        <section id="galeria" class="content-section hidden">
             <h2>Galería</h2>
-            <p>Aquí irá tu carrusel bonito 💛</p>
-        </div>
-    </section>
 
-    <!-- TIENDA -->
-    <section id="tienda" class="section">
-        <div class="galeria-box">
-            <h2>Tienda</h2>
-            <p>Aquí podrás vender stickers, prints, pins o arte digital.</p>
-        </div>
-    </section>
+            <div class="carousel">
+                <img class="small-img" src="img1.jpg" onclick="moveToCenter(this)">
+                <img class="center-img" src="img2.jpg" onclick="moveToCenter(this)">
+                <img class="small-img" src="img3.jpg" onclick="moveToCenter(this)">
+            </div>
 
-    <!-- COMISIONES -->
-    <section id="comisiones" class="section">
-        <div class="galeria-box">
-            <h2>Comisiones</h2>
-            <p>Información de precios, estilos y ejemplos.</p>
-        </div>
-    </section>
+        </section>
 
-    <!-- CONTACTO -->
-    <section id="contacto" class="section">
-        <div class="galeria-box">
-            <h2>Contacto</h2>
-            <p>Correo, redes sociales y formulario.</p>
-        </div>
-    </section>
+        <!-- SOBRE MI -->
+        <section id="sobre" class="content-section hidden">
+            <h2>Sobre mí</h2>
+            <p>Esta sección está aún en construcción.</p>
+        </section>
 
-    <!-- SCRIPT PARA MOSTRAR/OCULTAR -->
-    <script>
-        function showSection(id) {
-            document.querySelectorAll(".section").forEach(sec => {
-                sec.classList.remove("active");
-            });
-            document.getElementById(id).classList.add("active");
-        }
-    </script>
+        <!-- CONTACTO -->
+        <section id="contacto" class="content-section hidden">
+            <h2>Contáctame</h2>
+            <p>Correo: ejemplo@correo.com</p>
+        </section>
 
+    </main>
+
+<script src="script.js"></script>
 </body>
 </html>
+
 
