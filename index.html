@@ -3,99 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sketch Studio - Carrusel 3D</title>
+  <title>Sketch Studio — Carrusel 3D</title>
 
   <style>
     body {
-      background: #f2f2f2;
-      font-family: Arial, sans-serif;
+      background: #f4f4f4;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       margin: 0;
+      font-family: Arial, sans-serif;
     }
 
-    .carousel-container {
-      width: 80%;
-      max-width: 900px;
+    .carousel-wrapper {
+      width: 300px;
+      height: 300px;
       perspective: 1200px;
     }
 
     .carousel {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 25px;
-      transition: transform 0.8s ease;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1s;
     }
 
     .item {
-      width: 220px;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 20px;
+      width: 180px;
+      height: 180px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform-style: preserve-3d;
+      transform-origin: center center -250px;
+      transform: translate(-50%, -50%);
       cursor: pointer;
-      transition: transform 0.5s ease, opacity 0.5s ease;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      transition: transform 0.5s, opacity 0.5s;
     }
 
-    /* Imagen del centro */
+    .item img {
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      object-fit: cover;
+    }
+
     .active {
-      transform: scale(1.4);
-      opacity: 1;
-      z-index: 3;
-    }
-
-    /* Lados */
-    .side {
-      transform: scale(0.9);
-      opacity: 0.6;
+      transform: scale(1.25) translate(-50%, -50%);
+      z-index: 10;
     }
   </style>
-
 </head>
+
 <body>
 
-  <div class="carousel-container">
+  <div class="carousel-wrapper">
     <div id="carousel" class="carousel">
-      <img src="images/art1.jpg" class="item">
-      <img src="images/art2.jpg" class="item">
-      <img src="images/art3.jpg" class="item">
+
+      <div class="item"><img src="images/art1.jpg"></div>
+      <div class="item"><img src="images/art2.jpg"></div>
+      <div class="item"><img src="images/art3.jpg"></div>
+
     </div>
   </div>
 
   <script>
     const carousel = document.getElementById("carousel");
-    let items = Array.from(document.querySelectorAll(".item"));
-    let current = 1; // el del medio será art2
+    const items = document.querySelectorAll(".item");
 
-    function render() {
-      items.forEach((item, index) => {
-        item.classList.remove("active", "side");
-        if (index === current) {
-          item.classList.add("active");
-        } else {
-          item.classList.add("side");
-        }
-      });
+    let angle = 0;
+    const total = items.length;
+    const step = 360 / total;
 
-      // centro (mueve el carrusel)
-      const offset = (current * -260) + 260;
-      carousel.style.transform = `translateX(${offset}px)`;
+    // Posicionar items en círculo
+    items.forEach((item, i) => {
+      item.style.transform = `rotateY(${i * step}deg) translateZ(250px)`;
+    });
+
+    function update() {
+      carousel.style.transform = `rotateY(${angle}deg)`;
     }
 
-    // clic para mover al centro
     items.forEach((item, index) => {
       item.addEventListener("click", () => {
-        current = index;
-        render();
+        angle = -step * index;
+        update();
       });
     });
 
-    render();
+    update();
   </script>
 
 </body>
 </html>
-
