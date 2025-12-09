@@ -3,140 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Página</title>
+    <title>Sketch Studio — Vintage</title>
 
     <style>
+
+        /* 🎨 PALETA VINTAGE */
+        :root {
+            --boy-red: #6A6352;
+            --dark-vanilla: #D5CCAB;
+            --grullo: #A3A289;
+            --camouflage: #878568;
+            --olive-drab: #505143;
+        }
+
         body {
             margin: 0;
-            font-family: "Poppins", sans-serif;
-            background-color: #D5CCAB; /* Dark Vanilla */
-            color: #505143; /* Olive Drab */
+            font-family: "Georgia", serif;
+            color: var(--olive-drab);
+            background-color: var(--dark-vanilla);
         }
 
-        /* SECCIÓN DE PRESENTACIÓN */
-        .hero {
-            padding: 60px 20px;
+        /* ⭐ CABECERA VINTAGE */
+        header {
             text-align: center;
-            background: linear-gradient(
-                135deg,
-                #D5CCAB,
-                #A3A289,
-                #878568
-            );
-            border-bottom: 3px solid #6A6352; /* Boy Red */
+            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--dark-vanilla), var(--grullo), var(--camouflage));
+            border-bottom: 4px solid var(--boy-red);
+            box-shadow: 0 4px 12px rgba(80, 81, 67, 0.3);
         }
 
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
+        header h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            color: var(--boy-red);
+            letter-spacing: 3px;
+            font-weight: bold;
+            text-shadow: 0px 3px 4px rgba(0,0,0,0.2);
         }
 
-        .hero p {
-            font-size: 1.2rem;
+        header p {
+            font-size: 1.3rem;
+            margin-top: 10px;
             max-width: 700px;
-            margin: auto;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--olive-drab);
         }
 
-        /* CARRUSEL */
+        /* ⭐ BOTONES VINTAGE */
+        .center {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            background: var(--boy-red);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: 0.3s ease;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.25);
+        }
+
+        .btn:hover {
+            transform: scale(1.06);
+            background: var(--olive-drab);
+        }
+
+        /* ⭐ GALERÍA VINTAGE */
         .carousel-container {
-            position: relative;
             width: 90%;
-            max-width: 700px;
-            margin: 50px auto;
+            max-width: 650px;
+            margin: 40px auto;
+            display: none;
+            animation: fadeIn 0.7s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         .carousel {
             width: 100%;
-            height: 380px;
+            height: 360px;
             overflow: hidden;
-            border-radius: 12px;
-            border: 4px solid #6A6352;
+            border-radius: 18px;
+            border: 5px solid var(--boy-red);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
         }
 
         .carousel img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
             display: none;
-            border-radius: 10px;
+            object-fit: cover;
         }
 
         .carousel img.active {
             display: block;
+            animation: fade 0.6s ease;
         }
 
-        /* BOTONES */
-        .btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: #6A6352;
-            color: white;
-            border: none;
-            padding: 12px 18px;
-            font-size: 2rem;
-            cursor: pointer;
-            border-radius: 10px;
-            opacity: 0.8;
-            transition: 0.2s;
+        @keyframes fade {
+            from { opacity: 0; }
+            to   { opacity: 1; }
         }
 
-        .btn:hover {
-            opacity: 1;
-        }
-
-        .prev {
-            left: -10px;
-        }
-
-        .next {
-            right: -10px;
-        }
     </style>
 </head>
 
 <body>
 
-    <!-- PRESENTACIÓN (APARECE PRIMERO) -->
-    <section class="hero">
-        <h1>Hola, soy Heydi</h1>
-        <p>
-            Bienvenido a mi página web. Aquí podrás conocer un poco más sobre mí,
-            mis gustos, mis intereses y el estilo visual que me representa.
-            He elegido esta paleta de colores suave para que todo se vea armonioso.
-        </p>
-    </section>
+    <!-- PRESENTACIÓN -->
+    <header>
+        <h1>Sketch Studio</h1>
+        <p>Bienvenido a mi mundo artístico. Aquí encontrarás mis dibujos, ideas y proyectos especiales hechos con cariño.</p>
+    </header>
 
-    <!-- CARRUSEL (NO APARECE AL INICIO) -->
-    <section class="carousel-container">
+    <!-- BOTÓN PARA ABRIR GALERÍA -->
+    <div class="center">
+        <button class="btn" onclick="mostrarGaleria()">Ver Galería</button>
+    </div>
+
+    <!-- GALERÍA -->
+    <section id="galeria" class="carousel-container">
+
         <div class="carousel">
-            <img src="img1.jpg" class="active">
-            <img src="img2.jpg">
-            <img src="img3.jpg">
+            <img src="art1.jpg" class="active">
+            <img src="art2.jpg">
+            <img src="art3.jpg">
         </div>
 
-        <button class="btn prev">‹</button>
-        <button class="btn next">›</button>
+        <div class="center">
+            <button class="btn" onclick="prev()">Anterior</button>
+            <button class="btn" onclick="next()">Siguiente</button>
+        </div>
+
     </section>
 
-    <script>
-        const images = document.querySelectorAll(".carousel img");
-        let index = 0;
+<script>
+    // Mostrar galería con animación
+    function mostrarGaleria() {
+        document.getElementById("galeria").style.display = "block";
+        window.scrollTo({ top: 500, behavior: "smooth" });
+    }
 
-        document.querySelector(".next").onclick = () => {
-            images[index].classList.remove("active");
-            index = (index + 1) % images.length;
-            images[index].classList.add("active");
-        };
+    // Carrusel
+    const images = document.querySelectorAll(".carousel img");
+    let index = 0;
 
-        document.querySelector(".prev").onclick = () => {
-            images[index].classList.remove("active");
-            index = (index - 1 + images.length) % images.length;
-            images[index].classList.add("active");
-        };
-    </script>
+    function next() {
+        images[index].classList.remove("active");
+        index = (index + 1) % images.length;
+        images[index].classList.add("active");
+    }
+
+    function prev() {
+        images[index].classList.remove("active");
+        index = (index - 1 + images.length) % images.length;
+        images[index].classList.add("active");
+    }
+</script>
 
 </body>
 </html>
-
-
