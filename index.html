@@ -6,7 +6,7 @@
     <title>Sketch Studio</title>
 
     <style>
-        /* Reset */
+        /* RESET */
         * {
             margin: 0;
             padding: 0;
@@ -17,7 +17,6 @@
         body {
             background: #f4f4f4;
             color: #222;
-            transition: 0.3s;
         }
 
         /* NAVBAR */
@@ -35,77 +34,99 @@
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: 1px;
+            font-size: 2.4rem;   /* MÁS GRANDE */
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #ffce4b;
+            text-shadow: 0px 0px 10px rgba(255, 206, 75, 0.6);
         }
 
         nav a {
             color: #eee;
-            margin-left: 25px;
+            margin-left: 30px;
             text-decoration: none;
             font-weight: 500;
-            transition: 0.3s;
+            font-size: 1.1rem;
         }
 
         nav a:hover {
             color: #ffce4b;
         }
 
-        /* HERO SECTION */
-        .hero {
-            margin-top: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        /* SECCIONES QUE SE OCULTAN */
+        .section {
+            display: none;
             padding: 60px 10%;
-            gap: 50px;
         }
 
-        .hero-text h1 {
-            font-size: 3rem;
-            font-weight: 700;
+        /* MOSTRAR */
+        .active {
+            display: block;
         }
 
-        .hero-text p {
-            margin: 15px 0;
-            max-width: 450px;
-            font-size: 1.1rem;
-            color: #555;
+        /* HERO (Inicio) */
+        #inicio {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+        }
+
+        .hero-box {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            max-width: 850px;
+        }
+
+        h1 {
+            font-size: 3.4rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #444;
         }
 
         .btn {
-            margin-top: 20px;
-            display: inline-block;
-            padding: 12px 25px;
+            padding: 12px 30px;
+            border-radius: 8px;
             background: #4a77ff;
             color: white;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: 0.3s;
             border: none;
+            margin-top: 20px;
             cursor: pointer;
+            transition: 0.3s;
+            font-size: 1.1rem;
         }
 
         .btn:hover {
             background: #2f54d6;
         }
 
-        /* FOTO */
-        .hero img {
-            width: 260px;
-            height: auto;
+        /* Galería temporal (luego se reemplaza con tu carrusel real) */
+        .galeria-box {
+            background: white;
+            padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            transition: 0.3s;
-        }
-
-        .hero img:hover {
-            transform: scale(1.03);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
         }
 
     </style>
+
 </head>
 
 <body>
@@ -115,31 +136,68 @@
         <div class="logo">Sketch Studio</div>
 
         <nav>
-            <a href="#">Inicio</a>
-            <a href="#">Galería</a>
-            <a href="#">Tienda</a>
-            <a href="#">Comisiones</a>
-            <a href="#">Contacto</a>
+            <a href="#" onclick="showSection('inicio')">Inicio</a>
+            <a href="#" onclick="showSection('galeria')">Galería</a>
+            <a href="#" onclick="showSection('tienda')">Tienda</a>
+            <a href="#" onclick="showSection('comisiones')">Comisiones</a>
+            <a href="#" onclick="showSection('contacto')">Contacto</a>
         </nav>
     </header>
 
-    <!-- HERO PRESENTACIÓN -->
-    <section class="hero">
-        <div class="hero-text">
+    <!-- SECCIÓN INICIO -->
+    <section id="inicio" class="section active">
+        <div class="hero-box">
             <h1>Hola, soy <span style="color:#4a77ff;">Heydi</span></h1>
             <p>
-                Artista digital y creadora de contenido visual.  
-                Me encanta ilustrar, diseñar personajes y explorar nuevos estilos.
-                Aquí encontrarás mis dibujos, mis comisiones abiertas y mis proyectos.
+                Artista digital apasionada por crear ilustraciones y diseños llenos de vida y estilo.  
+                Bienvenid@ a mi espacio creativo.
             </p>
-
-            <button class="btn">Ver mi trabajo</button>
+            <button class="btn">Conoce mi trabajo</button>
         </div>
-
-        <img src="images/art1.jpg" alt="Mi foto">
     </section>
+
+    <!-- GALERÍA -->
+    <section id="galeria" class="section">
+        <div class="galeria-box">
+            <h2>Galería</h2>
+            <p>Aquí irá tu carrusel bonito 💛</p>
+        </div>
+    </section>
+
+    <!-- TIENDA -->
+    <section id="tienda" class="section">
+        <div class="galeria-box">
+            <h2>Tienda</h2>
+            <p>Aquí podrás vender stickers, prints, pins o arte digital.</p>
+        </div>
+    </section>
+
+    <!-- COMISIONES -->
+    <section id="comisiones" class="section">
+        <div class="galeria-box">
+            <h2>Comisiones</h2>
+            <p>Información de precios, estilos y ejemplos.</p>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="section">
+        <div class="galeria-box">
+            <h2>Contacto</h2>
+            <p>Correo, redes sociales y formulario.</p>
+        </div>
+    </section>
+
+    <!-- SCRIPT PARA MOSTRAR/OCULTAR -->
+    <script>
+        function showSection(id) {
+            document.querySelectorAll(".section").forEach(sec => {
+                sec.classList.remove("active");
+            });
+            document.getElementById(id).classList.add("active");
+        }
+    </script>
 
 </body>
 </html>
-
 
