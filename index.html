@@ -1,186 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sketch Studio</title>
-
-<style>
-/* 🎨 PALETA NUEVA */
-:root {
-  --boy-red: #6A6352;
-  --dark-vanilla: #D5CCAB;
-  --grullo: #A3A289;
-  --camo: #878568;
-  --olive: #505143;
-}
-
-/* 🧱 GENERAL */
-body {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  background-color: var(--boy-red);
-  color: var(--dark-vanilla);
-}
-
-/* 🖼 HEADER */
-header {
-  text-align: center;
-  padding: 70px 20px;
-  background-color: var(--olive);
-  border-bottom: 4px solid var(--grullo);
-}
-
-header h1 {
-  font-size: 4rem;
-  margin: 0;
-  letter-spacing: 3px;
-  font-weight: 900;
-  color: var(--dark-vanilla);
-}
-
-header p {
-  font-size: 1.3rem;
-  opacity: 0.9;
-}
-
-/* 🔘 BOTONES */
-.buttons {
-  text-align: center;
-  margin: 35px 0;
-}
-
-.buttons button {
-  background-color: var(--grullo);
-  border: none;
-  padding: 14px 28px;
-  margin: 10px;
-  border-radius: 14px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  cursor: pointer;
-  color: var(--olive);
-  transition: .25s ease;
-}
-
-.buttons button:hover {
-  background-color: var(--dark-vanilla);
-  transform: scale(1.09);
-}
-
-/* 📦 SECCIONES DESPLEGABLES CON ANIMACIÓN */
-.section {
-  width: 80%;
-  margin: 20px auto;
-  background-color: var(--camo);
-  padding: 20px 25px;
-  border-radius: 15px;
-  display: none;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: slideUp .4s forwards;
-  box-shadow: 0 0 15px #0003;
-}
-
-@keyframes slideUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* 🎠 CARRUSEL SIMPLE (EL QUE TÚ QUERÍAS) */
-.carousel {
-  width: 85%;
-  margin: 40px auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.carousel img {
-  width: 65%;
-  border-radius: 20px;
-  border: 4px solid var(--dark-vanilla);
-  display: none;
-  animation: fade .8s;
-  box-shadow: 0 0 18px #0004;
-}
-
-.carousel img.active {
-  display: block;
-}
-
-@keyframes fade {
-  from { opacity: 0; transform: scale(.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi Página Personal</title>
+    <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
 
-<header>
-  <h1>SKETCH STUDIO</h1>
-  <p>Arte con estilo personal</p>
-</header>
+    <!-- SECCIÓN DE PRESENTACIÓN -->
+    <header class="hero">
+        <h1>Hola, soy Heydi</h1>
+        <p>
+            Bienvenido a mi página web. Aquí encontrarás información sobre mí,
+            mis gustos y algunas imágenes que representan mi estilo. 
+            He creado esta página con una paleta de colores armoniosa y suave.
+        </p>
+    </header>
 
-<!-- 🔳 Botones de navegación -->
-<div class="buttons">
-  <button onclick="toggle('about')">Sobre mí</button>
-  <button onclick="toggle('gallery')">Galería</button>
-  <button onclick="toggle('store')">Tienda</button>
-  <button onclick="toggle('contact')">Contacto</button>
-</div>
+    <!-- CARRUSEL -->
+    <section class="carousel-container">
+        <div class="carousel">
+            <img src="img1.jpg" class="active">
+            <img src="img2.jpg">
+            <img src="img3.jpg">
+        </div>
 
-<!-- 📄 Secciones -->
-<div id="about" class="section">
-  <p>Hola, soy la artista detrás de Sketch Studio. Amo crear mundos, personajes y arte con estilo propio.</p>
-</div>
+        <button class="btn prev">‹</button>
+        <button class="btn next">›</button>
+    </section>
 
-<div id="gallery" class="section">
-  <p>Mira mis ilustraciones destacadas:</p>
-</div>
-
-<div id="store" class="section">
-  <p>Muy pronto podrás comprar prints, stickers y comisiones exclusivas.</p>
-</div>
-
-<div id="contact" class="section">
-  <p>Correo: sketchstudio@gmail.com<br>Instagram: @sketchstudio</p>
-</div>
-
-<!-- 🎠 Carrusel REAL con tus imágenes -->
-<div class="carousel">
-  <img src="images/art1.jpg" class="active">
-  <img src="images/art2.jpg">
-  <img src="images/art3.jpg">
-</div>
-
-<script>
-/* 🔘 ANIMACIÓN DE DESPLIEGUE */
-function toggle(id) {
-  const section = document.getElementById(id);
-
-  if (section.style.display === "block") {
-    section.style.display = "none";
-  } else {
-    section.style.display = "block";
-    section.style.animation = "slideUp .4s forwards";
-  }
-}
-
-/* 🎠 CARRUSEL */
-let index = 0;
-const images = document.querySelectorAll(".carousel img");
-
-setInterval(() => {
-  images[index].classList.remove("active");
-  index = (index + 1) % images.length;
-  images[index].classList.add("active");
-}, 3000);
-</script>
-
+    <script src="script.js"></script>
 </body>
 </html>
-
