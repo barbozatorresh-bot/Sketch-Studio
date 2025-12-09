@@ -44,31 +44,28 @@ header p {
   opacity: 0.9;
 }
 
-/* BOTONES */
-.buttons {
+/* MENU SIN BOTONES */
+.menu {
   text-align: center;
   margin: 30px 0;
 }
 
-.buttons button {
-  background-color: var(--grullo);
-  border: none;
-  padding: 15px 30px;
-  margin: 10px;
-  border-radius: 14px;
-  font-size: 1.1rem;
-  font-weight: 600;
+.menu span {
+  margin: 0 20px;
+  font-size: 1.3rem;
+  font-weight: 700;
   cursor: pointer;
-  color: var(--olive);
+  color: var(--dark-vanilla);
   transition: .3s;
 }
 
-.buttons button:hover {
-  background-color: var(--dark-vanilla);
-  transform: scale(1.07);
+.menu span:hover {
+  color: var(--grullo);
+  text-decoration: underline;
+  transform: scale(1.05);
 }
 
-/* SECCIONES CON ANIMACIÓN */
+/* SECCIONES */
 .section {
   width: 80%;
   margin: 20px auto;
@@ -89,7 +86,7 @@ header p {
   }
 }
 
-/* CARRUSEL (TU CARRUSEL ORIGINAL) */
+/* CARRUSEL */
 .carousel {
   width: 80%;
   margin: 40px auto;
@@ -125,11 +122,12 @@ header p {
   <p>Arte, diseño y estilo propio</p>
 </header>
 
-<div class="buttons">
-  <button onclick="toggle('about')">Sobre mí</button>
-  <button onclick="toggle('gallery')">Galería</button>
-  <button onclick="toggle('store')">Tienda</button>
-  <button onclick="toggle('contact')">Contacto</button>
+<!-- MENU SOLO TEXTO -->
+<div class="menu">
+  <span onclick="toggle('about')">Sobre mí</span>
+  <span onclick="toggle('gallery')">Galería</span>
+  <span onclick="toggle('store')">Tienda</span>
+  <span onclick="toggle('contact')">Contacto</span>
 </div>
 
 <div id="about" class="section">
@@ -138,6 +136,13 @@ header p {
 
 <div id="gallery" class="section">
   <p>Mira mis ilustraciones destacadas:</p>
+
+  <!-- CARRUSEL DENTRO DE GALERÍA -->
+  <div class="carousel">
+    <img src="images/art1.jpg" class="active">
+    <img src="images/art2.jpg">
+    <img src="images/art3.jpg">
+  </div>
 </div>
 
 <div id="store" class="section">
@@ -148,15 +153,8 @@ header p {
   <p>Correo: sketchstudio@gmail.com<br>Instagram: @sketchstudio</p>
 </div>
 
-<!-- CARRUSEL REAL -->
-<div class="carousel">
-  <img src="images/art1.jpg" class="active">
-  <img src="images/art2.jpg">
-  <img src="images/art3.jpg">
-</div>
-
 <script>
-/* ABRIR / CERRAR SECCIONES CON ANIMACIÓN */
+/* ABRIR / CERRAR SECCIONES */
 function toggle(id) {
   const section = document.getElementById(id);
 
@@ -168,7 +166,7 @@ function toggle(id) {
   }
 }
 
-/* CARRUSEL AUTOMÁTICO (EL TUYO) */
+/* CARRUSEL AUTOMÁTICO */
 let index = 0;
 const images = document.querySelectorAll(".carousel img");
 
