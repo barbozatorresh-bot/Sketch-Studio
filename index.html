@@ -6,13 +6,13 @@
 <title>Sketch Studio</title>
 
 <style>
-/* PALETA (MARRONES → BLANCO/GRIS) */
+/* PALETA */
 :root {
-  --boy-red: #FFFFFF;      /* Fondo general */
-  --dark-vanilla: #505143; /* Texto principal */
-  --grullo: #CCCCCC;       /* Gris claro para bordes */
-  --camo: #FFFFFF;         /* Fondo de secciones */
-  --olive: #2F3028;        /* Header oscuro elegante */
+  --boy-red: #FFFFFF;        /* Fondo general blanco */
+  --dark-vanilla: #505143;   /* Texto oscuro */
+  --grullo: #CCCCCC;         /* Gris suave */
+  --camo: #FFFFFF;           /* Fondo secciones */
+  --olive: #505143;          /* Header oscuro */
 }
 
 /* GENERAL */
@@ -36,12 +36,12 @@ header h1 {
   margin: 0;
   letter-spacing: 2px;
   font-weight: 800;
-  color: #FFFFFF; /* TÍTULO AHORA SÍ SE VE */
+  color: #FFFFFF;
 }
 
 header p {
   font-size: 1.2rem;
-  color: #FFFFFF; /* SUBTÍTULO BLANCO */
+  color: #FFFFFF;
   opacity: 0.9;
 }
 
@@ -87,7 +87,7 @@ header p {
   }
 }
 
-/* CARRUSEL */
+/* CARRUSEL GALERÍA */
 .carousel {
   width: 80%;
   margin: 40px auto;
@@ -113,6 +113,30 @@ header p {
   from { opacity: 0; transform: scale(.95); }
   to { opacity: 1; transform: scale(1); }
 }
+
+/* TIENDA */
+.store-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.store-item {
+  text-align: center;
+}
+
+.store-item img {
+  width: 200px;
+  border-radius: 15px;
+  border: 3px solid var(--olive);
+  box-shadow: 0 0 10px #0003;
+}
+
+.store-item p {
+  margin-top: 10px;
+  font-weight: 600;
+}
 </style>
 </head>
 
@@ -123,7 +147,7 @@ header p {
   <p>Arte, diseño y estilo propio</p>
 </header>
 
-<!-- MENU -->
+<!-- MENÚ -->
 <div class="menu">
   <span onclick="toggle('about')">Sobre mí</span>
   <span onclick="toggle('gallery')">Galería</span>
@@ -131,10 +155,12 @@ header p {
   <span onclick="toggle('contact')">Contacto</span>
 </div>
 
+<!-- SOBRE MÍ -->
 <div id="about" class="section">
   <p>Hola, soy la artista detrás de Sketch Studio. Bienvenido a mi mundo creativo.</p>
 </div>
 
+<!-- GALERÍA -->
 <div id="gallery" class="section">
   <p>Mira mis ilustraciones destacadas:</p>
 
@@ -145,10 +171,24 @@ header p {
   </div>
 </div>
 
+<!-- TIENDA -->
 <div id="store" class="section">
-  <p>Pronto añadiré prints, stickers y comisiones.</p>
+  <h2>Productos disponibles</h2>
+
+  <div class="store-grid">
+    <div class="store-item">
+      <img src="images/llavero.png" alt="Llavero">
+      <p>Llavero</p>
+    </div>
+
+    <div class="store-item">
+      <img src="images/sticker.png" alt="Sticker">
+      <p>Sticker</p>
+    </div>
+  </div>
 </div>
 
+<!-- CONTACTO -->
 <div id="contact" class="section">
   <p>Correo: sketchstudio@gmail.com<br>Instagram: @sketchstudio</p>
 </div>
@@ -179,4 +219,5 @@ setInterval(() => {
 
 </body>
 </html>
+
 
