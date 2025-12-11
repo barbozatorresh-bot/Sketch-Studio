@@ -1,11 +1,9 @@
-/* script.js - Sketch Studio
-    Compatible con el index.html corregido.
-*/
+/* script.js - Sketch Studio */
 
 document.addEventListener('DOMContentLoaded', ()=>{
 
-	/* ========== REFERENCIA DE ELEMENTOS ========== */
-	const themeBtn = document.getElementById('themeToggle'); // Usamos el botón del HTML
+	/* ========== REFERENCIA DE ELEMENTOS (Asegurando la referencia del botón de tema) ========== */
+	const themeBtn = document.getElementById('themeToggle'); 
 	const chatInput = document.getElementById('chatInput');
 	const chatWindow = document.getElementById('chatWindow');
 	const chatBody = document.getElementById('chatBody');
@@ -19,9 +17,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
 	let idx = imgs.findIndex(i => i.classList.contains('active'));
 	if(idx < 0) idx = 0;
 
+	// Referencia de elementos del nuevo formulario de contacto
+	const contactForm = document.getElementById('contactForm');
+	const feedbackEl = document.getElementById('contactMessageFeedback');
+
 
 	/* ========== UTIL: show first section on load ========== */
-	// Esto asegura que la primera sección ('about') siempre se muestre correctamente al cargar.
 	const first = document.querySelector('.section');
 	if(first){
 		first.classList.add('show');
@@ -29,8 +30,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 	}
 
 
-	/* ========== TOGGLE SECTIONS (used by menu onclick="toggle('id')") ========== */
-	// Usamos 'toggle' para que coincida con el onclick en el HTML.
+	/* ========== TOGGLE SECTIONS (Menu) ========== */
 	window.toggle = function(id){
 		document.querySelectorAll('.section').forEach(s=>{
 			s.classList.remove('show');
@@ -39,15 +39,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
 		const sec = document.getElementById(id);
 		if(!sec) return;
 		sec.style.display = 'block';
-		// slight delay so animation triggers
 		requestAnimationFrame(()=> sec.classList.add('show'));
-		// center scroll
 		sec.scrollIntoView({behavior:'smooth', block:'center'});
 	}
 
 
 	/* ========== THEME BUTTON FUNCIONALIDAD ========== */
-
 	function updateThemeText(){
 		if(!themeBtn) return;
 		if(document.body.classList.contains('dark')) themeBtn.textContent = '☀️ Modo Claro';
@@ -58,12 +55,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
 		themeBtn.addEventListener('click', ()=>{
 			document.body.classList.toggle('dark');
 			updateThemeText();
-			// optional: persist choice
 			try{ localStorage.setItem('sketch-theme', document.body.classList.contains('dark') ? 'dark' : 'light'); }catch(e){}
 		});
 	}
 
-	// load persisted theme
 	try{
 		const t = localStorage.getItem('sketch-theme');
 		if(t === 'dark') document.body.classList.add('dark');
@@ -91,7 +86,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
 		wrapper.addEventListener('mouseleave', ()=> auto = setInterval(()=> show(idx+1), 4200));
 	}
 
-	/* ========== CART (simple in-memory) ========== */
+
+	/* ========== CART (Funcionalidad sin cambios) ========== */
 	let cart = {}; // {id: {qty, price, title, img}}
 
 	window.addToCart = function(id){
@@ -103,11 +99,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
 		if(!cart[id]) cart[id] = { qty: 0, price, title, img };
 		cart[id].qty++;
 		renderCart();
-		// open overlay
 		if(cartOverlay) cartOverlay.style.display = 'flex';
 	}
 
 	function renderCart(){
+		// ... (código renderCart() sin cambios)
 		if(!cartItemsBox || !cartTotalEl) return;
 		cartItemsBox.innerHTML = '';
 		let total = 0;
@@ -169,9 +165,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
 		cart = {}; renderCart(); cartOverlay.style.display = 'none';
 	}
 
-	renderCart(); // initial
+	renderCart();
 
-	/* ========== CHATBOT (FAQ simple) ========== */
+
+	/* ========== CHATBOT (Funcionalidad sin cambios) ========== */
 
 	window.toggleChat = function(){
 		if(!chatWindow) return;
@@ -204,14 +201,47 @@ document.addEventListener('DOMContentLoaded', ()=>{
 		}, 600);
 	}
 
-	// send when press Enter
 	if(chatInput){
 		chatInput.addEventListener('keydown', (e)=>{
 			if(e.key === 'Enter') sendMessage();
 		});
 	}
 
-	/* ========== keyboard shortcuts (optional) ========== */
+	/* ========== CONTACT FORM SUBMISSION (Simulación) ========== */
+
+	if(contactForm){
+		contactForm.addEventListener('submit', function(e){
+			e.preventDefault(); // Evita el envío real del formulario (simulación)
+			
+			const name = document.getElementById('contactName').value;
+			const email = document.getElementById('contactEmail').value;
+			const message = document.getElementById('contactMessage').value;
+			
+			// Simple validación (ya lo hace el 'required' del HTML, pero por seguridad)
+			if (!name || !email || !message) {
+				feedbackEl.innerText = 'Por favor, llena todos los campos requeridos.';
+				feedbackEl.style.display = 'block';
+				return;
+			}
+			
+			// SIMULACIÓN DE ENVÍO EXITOSO
+			console.log("Datos de contacto enviados (simulación):", { name, email, message });
+			
+			// Mostrar mensaje de confirmación
+			feedbackEl.style.color = 'var(--primary)'; // Color de éxito
+			feedbackEl.innerText = '¡Mensaje enviado con éxito! Nos contactaremos contigo lo más pronto posible.';
+			feedbackEl.style.display = 'block';
+			
+			// Limpiar formulario después de un breve retraso
+			setTimeout(()=>{
+				contactForm.reset();
+				// Ocultar mensaje de confirmación
+				setTimeout(() => { feedbackEl.style.display = 'none'; }, 5000);
+			}, 1000);
+		});
+	}
+
+	/* ========== KEYBOARD SHORTCUTS (optional) ========== */
 	document.addEventListener('keydown', (e)=>{
 		if(e.key === 'm' && (e.ctrlKey || e.metaKey)){ // Ctrl/Cmd + M toggles theme
 			document.body.classList.toggle('dark');
