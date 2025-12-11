@@ -4,10 +4,10 @@
    ========================== */
 
 :root{
-	--primary: #5F2119;         /* Philippine Brown */
+	--primary: #5F2119;         /* Philippine Brown */
 	--primary-2: #8A3B33;
-	--accent: #D7C1A8;          /* dark vanilla-ish */
-	--muted: #A28C75;           /* beaver */
+	--accent: #D7C1A8;          /* dark vanilla-ish */
+	--muted: #A28C75;           /* beaver */
 	--card: #ffffff;
 	--bg: #faf7f5;
 	--text: #2b1a18;
@@ -28,7 +28,7 @@ body.dark {
 html,body{height:100%}
 body{
 	margin:0;
-	font-family: "Poppins", sans-serif;
+	font-family: sans-serif;
 	background: linear-gradient(180deg, var(--bg) 0%, #fff 100%);
 	color:var(--text);
 	-webkit-font-smoothing:antialiased;
@@ -36,13 +36,13 @@ body{
 	transition: background .35s ease, color .35s ease;
 }
 
-/* logo font (Tangerine - ACTUALIZADO) */
+/* logo font (ANTES: Tangerine) */
 .logo-font{
-	font-family:"Tangerine", cursive; /* Usamos la nueva fuente */
-	font-size:4.8rem; /* Tamaño más grande para la caligrafía */
+	font-family: sans-serif;
+	font-size:4.8rem;
 	font-weight:700;
 	margin:0;
-	color: white;           /* header will set background primary */
+	color: white;
 	letter-spacing:1px;
 	line-height:1;
 	text-shadow: 0 3px 0 rgba(0,0,0,0.18);
@@ -62,7 +62,7 @@ header p{
 	font-weight:500;
 }
 
-/* theme toggle (ACTUALIZADO: El botón existe en el HTML con ID) */
+/* theme toggle */
 .theme-btn, .theme-toggle {
 	position: absolute;
 	right: 16px;
@@ -94,7 +94,7 @@ header p{
 }
 .menu span:hover{ color:var(--muted); transform: translateY(-2px); }
 
-/* SECCIONES: symmetric container + animations */
+/* SECCIONES */
 .section{
 	width:84%;
 	max-width:1100px;
@@ -109,14 +109,12 @@ header p{
 	transition: opacity .42s ease, transform .42s ease, background .35s;
 }
 
-/* visible state (JS sets display:block then animates) */
 .section.show {
 	display:block;
 	opacity:1;
 	transform: translateY(0);
 }
 
-/* titles */
 .title{
 	text-align:center;
 	color:var(--primary);
@@ -124,9 +122,7 @@ header p{
 	margin:0 0 12px 0;
 }
 
-/* -------------------------
-   CAROUSEL (centered, smooth fade)
-   ------------------------- */
+/* CAROUSEL */
 .gallery-container{
 	width:100%;
 	display:flex;
@@ -147,7 +143,6 @@ header p{
 	box-shadow: 0 10px 40px rgba(0,0,0,0.06);
 }
 
-/* images absolute stacked */
 .carousel-img{
 	position:absolute;
 	inset:0;
@@ -164,7 +159,6 @@ header p{
 	transform: scale(1);
 }
 
-/* arrows */
 .carousel-btn{
 	position:absolute;
 	top:50%;
@@ -184,7 +178,6 @@ header p{
 #prevBtn{ left:14px; }
 #nextBtn{ right:14px; }
 
-/* dots - only dots */
 .dots{ display:flex; gap:10px; justify-content:center; margin-top:12px; }
 .dot{
 	width:12px; height:12px;
@@ -198,9 +191,7 @@ header p{
 	transform: scale(1.12);
 }
 
-/* -------------------------
-   STORE
-   ------------------------- */
+/* STORE */
 .store-grid{
 	display:grid;
 	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -226,7 +217,6 @@ header p{
 .product-price{ font-weight:600; color:var(--muted); }
 .product-note{ color:#666; font-size:.9rem; }
 
-/* buttons */
 .btn{
 	background: var(--primary);
 	color: white;
@@ -244,9 +234,7 @@ header p{
 	cursor:pointer;
 }
 
-/* -------------------------
-   CART overlay & FAB
-   ------------------------- */
+/* CARRITO */
 .cart-fab{
 	position:fixed;
 	right:20px;
@@ -284,9 +272,7 @@ header p{
 .cart-item img{ width:56px; height:56px; object-fit:cover; border-radius:8px; }
 .cart-total{ font-weight:800; text-align:right; margin-top:6px; color:var(--primary); }
 
-/* -------------------------
-   CHAT
-   ------------------------- */
+/* CHAT */
 .chat-fab{
 	position:fixed;
 	right:20px;
@@ -322,52 +308,44 @@ header p{
 .chat-input{ display:flex; gap:8px; padding:10px; border-top:1px solid rgba(0,0,0,0.06); }
 .chat-input input{ flex:1; padding:8px 10px; border-radius:8px; border:1px solid rgba(0,0,0,0.06); }
 
-/* chat bubbles */
 .chat-msg{ max-width:78%; padding:8px 10px; border-radius:12px; font-size:.95rem; line-height:1.2; }
 .bot{ background: var(--card); border:1px solid rgba(0,0,0,0.04); align-self:flex-start; color:var(--text); }
 .user{ background:var(--primary); color:#fff; align-self:flex-end; }
 
-
-/* -------------------------
-   CONTACT FORM (Ajustes de estructura para la imagen)
-   ------------------------- */
-
+/* CONTACTO */
 .contact-form-container{
 	max-width: 500px;
 	margin: 0 auto;
-	padding: 20px 0 0 0; /* Padding ajustado para el diseño abierto */
+	padding: 20px 0 0 0;
 }
-/* Nuevo contenedor para cada fila (etiqueta + campo) */
 .form-row{
 	margin-bottom: 15px;
-	display: flex; /* Habilita Flexbox */
-	align-items: flex-start; /* Alinea al inicio si hay textarea */
-	gap: 10px; /* Espacio entre etiqueta y campo */
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
 }
-/* Estilos para las etiquetas */
 .form-row label{
 	font-weight: 600;
 	color: var(--primary);
 	font-size: 0.95rem;
-	width: 150px; /* Ancho fijo para las etiquetas */
-	padding-top: 10px; /* Alineación vertical con el input */
+	width: 150px;
+	padding-top: 10px;
 	text-align: right;
 }
-/* Estilos para los campos de entrada */
 .form-row input,
 .form-row textarea{
-	flex-grow: 1; /* Permite que el campo ocupe el resto del espacio */
+	flex-grow: 1;
 	padding: 10px 12px;
-	border: 1px solid rgba(0,0,0,0.2); /* Borde más oscuro como en la imagen */
-	border-radius: 4px; /* Bordes más cuadrados */
-	font-family: "Poppins", sans-serif;
+	border: 1px solid rgba(0,0,0,0.2);
+	border-radius: 4px;
+	font-family: sans-serif;
 	font-size: 1rem;
 	background: var(--card); 
 	color: var(--text);
 	transition: border-color .2s;
 }
 .form-row textarea{
-	resize: vertical; /* Permite solo redimensionar verticalmente */
+	resize: vertical;
 }
 
 .form-row input:focus,
@@ -379,22 +357,21 @@ header p{
 .contact-btn{
 	padding: 12px 20px;
 	margin-top: 10px;
-	margin-left: 160px; /* Alinea el botón con los campos de entrada */
+	margin-left: 160px;
 	font-size: 1rem;
 }
-
 
 /* small screens */
 @media (max-width:720px){
 	.carousel-wrapper{ width:94%; aspect-ratio:4/3; }
 	header{ padding:40px 12px; }
-	.logo-font{ font-size:3.8rem; } /* Ajuste del logo para móviles */
+	.logo-font{ font-size:3.8rem; }
 	.menu span{ display:inline-block; margin:0 10px; }
 	.cart-overlay{ right:12px; top:90px; width:280px; }
 	.chat-window{ right:12px; bottom:78px; width:90%; }
 }
 
-/* RESPONSIVE: Vuelve a la estructura de columna en pantallas pequeñas para el formulario */
+/* RESPONSIVE FORM */
 @media (max-width:550px){
 	.form-row{
 		flex-direction: column;
