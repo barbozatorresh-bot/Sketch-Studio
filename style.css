@@ -1,97 +1,104 @@
-/* PALETA */
 :root {
-  --principal: #5F2119;   /* Philippine Brown */
-  --falu: #702220;
-  --quincy: #6C5141;
-  --beaver: #A28C75;
-  --vanilla: #D7C1A8;
+    --pine: #2C3418;
+    --blue: #94A59C;
+    --bone: #DDDFC2;
+    --black: #1A1A1A;
+    --white: #F8F8F0;
 }
 
-/* GENERAL */
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
 body {
-  margin: 0;
-  font-family: Georgia, serif;
-  background: var(--vanilla);
-  color: var(--principal);
+    background-color: var(--bone);
+    color: var(--black);
 }
 
 /* HEADER */
 header {
-  background: var(--principal);
-  padding: 20px 0;
-  text-align: center;
-  color: white;
+    background: var(--pine);
+    color: var(--white);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-nav {
-  margin-top: 10px;
+header h1 {
+    font-size: 28px;
 }
 
 nav a {
-  color: white;
-  margin: 0 15px;
-  text-decoration: none;
-  font-weight: bold;
+    margin-left: 20px;
+    color: var(--white);
+    text-decoration: none;
+    font-weight: bold;
 }
 
-nav a:hover {
-  text-decoration: underline;
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 60px;
+    background: var(--blue);
+    color: var(--black);
 }
 
-/* TRANSICIÓN */
-.page {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(20px);
-  transition: all 0.5s ease;
-  padding: 30px;
-}
-
-.page.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+.hero h2 {
+    font-size: 32px;
 }
 
 /* GALERÍA */
 .galeria {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
+    padding: 40px;
+    text-align: center;
 }
 
-.galeria img {
-  width: 100%;
-  border: 3px solid var(--principal);
-  border-radius: 6px;
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
 }
 
-/* STORE */
-.productos {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+.grid img {
+    width: 100%;
+    border-radius: 10px;
+    border: 3px solid var(--pine);
 }
 
-.item {
-  background: var(--beaver);
-  padding: 15px;
-  border-radius: 8px;
-  width: 160px;
-  text-align: center;
-  color: black;
-}
-
-.item img {
-  width: 100%;
-  border-radius: 8px;
+/* COMISIONES */
+.comisiones {
+    padding: 40px;
+    background: var(--white);
+    text-align: center;
 }
 
 button {
-  background: var(--falu);
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 6px;
-  cursor: pointer;
+    padding: 12px 20px;
+    background: var(--pine);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+/* CONTACTO */
+.contacto {
+    padding: 40px;
+    background: var(--blue);
+    text-align: center;
+}
+
+footer {
+    background: var(--pine);
+    color: var(--white);
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
 }
