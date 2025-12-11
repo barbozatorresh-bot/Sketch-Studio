@@ -1,183 +1,96 @@
-/* PALETA */
 :root {
-    --primary: #5F2119;
-    --secondary: #A28C75;
-    --light: #D7C1A8;
-    --dark: #6C5141;
-    --accent: #702220;
+  --brown-main: #5F2119;
+  --falu-red: #702220;
+  --quincy: #6C5141;
+  --beaver: #A28C75;
+  --vanilla: #D7C1A8;
 }
 
-/* GENERAL */
 body {
-    margin: 0;
-    font-family: "Georgia";
-    background: var(--light);
-    color: var(--primary);
+  margin: 0;
+  font-family: "Georgia", serif;
+  background: var(--vanilla);
+  color: var(--brown-main);
 }
 
-/* NAV */
-nav {
-    background: var(--primary);
-    padding: 10px 0;
-    text-align: center;
+/* HEADER */
+header {
+  background: var(--brown-main);
+  padding: 15px;
+  text-align: center;
+  color: white;
 }
 
 nav ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
-nav li {
-    display: inline-block;
-    margin: 0 20px;
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
+nav ul li {
+  display: inline-block;
+  margin: 0 15px;
 }
 
-nav li:hover {
-    color: var(--light);
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-/* SECCIONES */
-.section {
-    display: none;
-    opacity: 0;
-    padding: 40px;
-    text-align: center;
-    transition: opacity 0.6s ease-in-out;
+/* TRANSICIONES ENTRE SECCIONES */
+.page {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all .5s ease;
 }
 
-.section.show {
-    display: block;
-    opacity: 1;
+.page.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
-/* GALERÍA (SLIDER) */
-.slider {
-    width: 70%;
-    margin: auto;
-    position: relative;
+/* GALERÍA */
+.galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  padding: 20px;
 }
 
-.slides img {
-    width: 100%;
-    border-radius: 10px;
-    display: none;
+.galeria-grid img {
+  width: 100%;
+  border-radius: 8px;
+  border: 3px solid var(--brown-main);
 }
 
-.slides img.active {
-    display: block;
+/* STORE */
+.productos {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
 }
 
-.dots {
-    text-align: center;
-    margin-top: 15px;
+.item {
+  background: var(--beaver);
+  padding: 15px;
+  border-radius: 8px;
+  width: 150px;
+  text-align: center;
 }
 
-.dot {
-    height: 12px;
-    width: 12px;
-    margin: 5px;
-    display: inline-block;
-    background: var(--secondary);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.dot.active {
-    background: var(--primary);
-}
-
-/* PRODUCTOS */
-.product {
-    display: inline-block;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    margin: 20px;
-    width: 200px;
-    box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
-}
-
-.product img {
-    width: 100%;
-    border-radius: 10px;
+.item img {
+  width: 100%;
+  border-radius: 8px;
 }
 
 button {
-    padding: 10px;
-    background: var(--primary);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: var(--accent);
-}
-
-/* CARRITO */
-#cart-btn {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    background: var(--primary);
-    color: white;
-    padding: 12px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-#cart {
-    display: none;
-    position: fixed;
-    right: 10px;
-    bottom: 80px;
-    background: white;
-    padding: 20px;
-    width: 220px;
-    border-radius: 10px;
-    box-shadow: 0px 3px 10px rgba(0,0,0,0.3);
-}
-
-/* CHATBOT */
-#chatbot-icon {
-    position: fixed;
-    left: 20px;
-    bottom: 20px;
-    background: var(--primary);
-    color: white;
-    padding: 12px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-#chatbot {
-    display: none;
-    position: fixed;
-    left: 20px;
-    bottom: 80px;
-    background: white;
-    width: 220px;
-    height: 250px;
-    border-radius: 10px;
-    padding: 10px;
-    overflow: hidden;
-    box-shadow: 0px 3px 10px rgba(0,0,0,0.3);
-}
-
-#chat-content {
-    height: 200px;
-    overflow-y: auto;
-}
-
-#chat-input {
-    width: 100%;
-    border: 1px solid var(--primary);
-    padding: 5px;
-    border-radius: 5px;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: var(--falu-red);
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
 }
