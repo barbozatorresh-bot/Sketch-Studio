@@ -6,7 +6,7 @@
 	<title>Sketch Studio</title>
 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap">
 
 	<link rel="stylesheet" href="style.css">
 
@@ -29,7 +29,10 @@
 </div>
 
 <section id="about" class="section" style="display:block; opacity:1;">
-	<p>Hola, soy la artista detrás de Sketch Studio. Bienvenido a mi mundo creativo.</p>
+	<h2 class="title">Mi Enfoque Creativo</h2>
+	<p>¡Hola! Soy la creadora detrás de **Sketch Studio**. Mi trabajo representa la intersección entre la **expresión visual y el diseño estructurado**. El arte es mi espacio para la innovación, donde aplico una mentalidad que valora la claridad, la composición y el detalle riguroso en cada proyecto.</p>
+	<p>La creación de cada pieza, ya sea ilustración digital o diseño de productos, es abordada con **dedicación y precisión**. No busco etiquetas ni títulos, sino resultados que reflejen un **estilo propio** cohesionado y bien ejecutado. Esto me permite transformar ideas complejas en diseños estéticos y funcionales.</p>
+	<p style="text-align: center; margin-top: 20px;">*Bienvenido a mi portafolio de arte y diseño.*</p>
 </section>
 
 <section id="gallery" class="section">
@@ -75,7 +78,33 @@
 </section>
 
 <section id="contact" class="section">
-	<p>Correo: sketchstudio@gmail.com<br>Instagram: @sketchstudio</p>
+	<h2 class="title">Hablemos de tu proyecto</h2>
+	<p style="text-align:center; margin-bottom: 20px;">¿Tienes alguna pregunta, una idea para una comisión o simplemente quieres saludar? ¡Escríbeme!</p>
+
+	<div class="contact-form-container">
+		<form id="contactForm">
+			<div class="form-row">
+				<label for="contactName">Tu Nombre</label>
+				<input type="text" id="contactName" required>
+			</div>
+			<div class="form-row">
+				<label for="contactEmail">Tu Correo (ej. mi@email.com)</label>
+				<input type="email" id="contactEmail" required>
+			</div>
+			<div class="form-row">
+				<label for="contactMessage">Mensaje / Consulta</label>
+				<textarea id="contactMessage" rows="5" required></textarea>
+			</div>
+			
+			<button type="submit" class="btn contact-btn">Enviar Mensaje</button>
+			<p id="contactMessageFeedback" style="text-align:center; color: var(--primary); font-weight: 600; margin-top: 15px; display: none;"></p>
+		</form>
+	</div>
+
+	<div style="text-align:center; margin-top: 30px; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 20px;">
+		<p>O encuéntrame en:</p>
+		<p>Instagram: **@sketchstudio** | Correo directo: **sketchstudio@gmail.com**</p>
+	</div>
 </section>
 
 <div class="cart-fab" onclick="toggleCart()">🛒</div>
