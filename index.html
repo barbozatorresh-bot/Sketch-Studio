@@ -1,92 +1,77 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaychan Studio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sketch Studio</title>
 
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
 </head>
 
 <body>
-
-    <!-- NAV -->
+  <header>
+    <h1>Sketch Studio</h1>
     <nav>
-        <ul>
-            <li onclick="toggle('inicio')">Inicio</li>
-            <li onclick="toggle('galeria')">Galería</li>
-            <li onclick="toggle('store')">Store</li>
-            <li onclick="toggle('about')">Sobre mí</li>
-        </ul>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#store">Store</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+      </ul>
     </nav>
+  </header>
 
-    <!-- SECCIONES -->
-    <section id="inicio" class="section show">
-        <h1>Bienvenido a Kaychan Studio</h1>
-        <p>Celebro el arte con un estilo único ✨</p>
+  <main>
+    <!-- INICIO -->
+    <section id="inicio" class="page show">
+      <h2>Bienvenido</h2>
+      <p>Arte digital con estilo único ✨</p>
     </section>
 
-    <!-- GALERÍA (SLIDER CON PUNTITOS) -->
-    <section id="galeria" class="section">
-        <h2>Galería</h2>
-
-        <div class="slider">
-            <div class="slides">
-                <img src="img1.jpg" class="slide active">
-                <img src="img2.jpg" class="slide">
-                <img src="img3.jpg" class="slide">
-            </div>
-
-            <div class="dots">
-                <span class="dot active" onclick="currentSlide(0)"></span>
-                <span class="dot" onclick="currentSlide(1)"></span>
-                <span class="dot" onclick="currentSlide(2)"></span>
-            </div>
-        </div>
+    <!-- GALERÍA -->
+    <section id="galeria" class="page">
+      <h2>Galería</h2>
+      <div class="galeria-grid">
+        <img src="img1.jpg" alt="">
+        <img src="img2.jpg" alt="">
+        <img src="img3.jpg" alt="">
+      </div>
     </section>
 
     <!-- STORE -->
-    <section id="store" class="section">
-        <h2>Tienda</h2>
-
-        <div class="product">
-            <img src="keychain.jpg">
-            <h3>Keychain Kaychan</h3>
-            <p>15 unidades → 5 soles</p>
-            <button onclick="addToCart('Keychain Kaychan', 5)">Agregar al carrito</button>
+    <section id="store" class="page">
+      <h2>Store</h2>
+      <div class="productos">
+        <div class="item">
+          <img src="img1.jpg">
+          <p>Producto 1 - S/ 10</p>
+          <button data-precio="10">Comprar</button>
         </div>
 
-        <div class="product">
-            <img src="sticker.jpg">
-            <h3>Sticker Pack Kaychan</h3>
-            <p>15 unidades → 5 soles</p>
-            <button onclick="addToCart('Sticker Pack Kaychan', 5)">Agregar al carrito</button>
+        <div class="item">
+          <img src="img2.jpg">
+          <p>Producto 2 - S/ 15</p>
+          <button data-precio="15">Comprar</button>
         </div>
+
+        <div class="item">
+          <img src="img3.jpg">
+          <p>Producto 3 - S/ 20</p>
+          <button data-precio="20">Comprar</button>
+        </div>
+      </div>
+
+      <h3>Carrito</h3>
+      <p>Total: S/ <span id="total">0</span></p>
     </section>
 
-    <!-- SOBRE MI -->
-    <section id="about" class="section">
-        <h2>Sobre mí</h2>
-        <p>Artista digital con amor por el estilo vintage 🧡</p>
+    <!-- SOBRE MÍ -->
+    <section id="sobre-mi" class="page">
+      <h2>Sobre mí</h2>
+      <p>Artista digital apasionada por el estilo vintage ✨</p>
     </section>
-
-    <!-- CARRITO -->
-    <div id="cart-btn" onclick="toggleCart()">🛒</div>
-
-    <div id="cart">
-        <h3>Carrito</h3>
-        <ul id="cart-items"></ul>
-        <p id="total">Total: S/ 0</p>
-        <button id="buy">Comprar</button>
-    </div>
-
-    <!-- CHATBOT -->
-    <div id="chatbot-icon" onclick="toggleChat()">💬</div>
-    <div id="chatbot">
-        <div id="chat-content"></div>
-        <input id="chat-input" placeholder="Escribe algo..." onkeydown="if(event.key==='Enter') sendChat()">
-    </div>
+  </main>
 
 </body>
 </html>
