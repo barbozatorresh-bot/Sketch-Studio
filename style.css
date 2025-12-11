@@ -1,338 +1,64 @@
 /* ==========================
-   Sketch Studio - style.css
-   Palette: Philippine Brown (#5F2119) principal
-   Fonts: Poppins (general), Great Vibes (logo)
+   AGREGADOS / MODIFICADOS
    ========================== */
 
-:root{
-  --primary: #5F2119;         /* Philippine Brown */
-  --primary-2: #8A3B33;
-  --accent: #D7C1A8;          /* dark vanilla-ish */
-  --muted: #A28C75;           /* beaver */
-  --card: #ffffff;
-  --bg: #faf7f5;
-  --text: #2b1a18;
-  --glass: rgba(255,255,255,0.6);
-}
-
-/* dark mode vars (applied via .dark on body) */
-body.dark {
-  --card: #23120f;
-  --bg: #120705;
-  --text: #f7efe9;
-  --glass: rgba(255,255,255,0.03);
-  --accent: #8c3a30;
-}
-
-/* reset / base */
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(180deg, var(--bg) 0%, #fff 100%);
-  color:var(--text);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  transition: background .35s ease, color .35s ease;
-}
-
-/* logo font (Great Vibes loaded in HTML) */
+/* TIPOGRAFÍA DEL LOGO (Cambiada de Great Vibes a Tangerine) */
 .logo-font{
-  font-family:"Great Vibes", cursive;
-  font-size:3.6rem;
-  margin:0;
-  color: white;           /* header will set background primary */
-  letter-spacing:1px;
-  line-height:1;
-  text-shadow: 0 2px 0 rgba(0,0,0,0.15);
+	font-family:"Tangerine", cursive; /* Usamos la nueva fuente */
+	font-size:4.8rem; /* Tamaño un poco más grande para destacar la caligrafía */
+	font-weight:700;
+	margin:0;
+	color: white;
+	letter-spacing:1px;
+	line-height:1;
+	text-shadow: 0 3px 0 rgba(0,0,0,0.18);
+	/* Adaptación para pantallas pequeñas */
 }
-
-/* HEADER */
-header{
-  text-align:center;
-  padding:56px 18px;
-  background: var(--primary);
-  border-bottom: 3px solid rgba(0,0,0,0.08);
-  position:relative;
-}
-header p{
-  margin:8px 0 0 0;
-  color: rgba(255,255,255,0.95);
-  font-weight:500;
-}
-
-/* theme toggle created by JS - style */
-.theme-toggle {
-  position: absolute;
-  right: 16px;
-  top: 16px;
-  padding: 8px 12px;
-  background: var(--card);
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  color: var(--primary);
-  font-weight:700;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-  transition: transform .15s ease, opacity .15s;
-}
-.theme-toggle:hover{ transform: translateY(-2px); }
-
-/* MENU */
-.menu{
-  text-align:center;
-  margin:28px 0;
-}
-.menu span{
-  margin:0 18px;
-  font-size:1.04rem;
-  font-weight:700;
-  cursor:pointer;
-  color:var(--primary);
-  transition: color .18s, transform .18s;
-}
-.menu span:hover{ color:var(--muted); transform: translateY(-2px); }
-
-/* SECCIONES: symmetric container + animations */
-.section{
-  width:84%;
-  max-width:1100px;
-  margin:20px auto;
-  background: var(--card);
-  padding:22px;
-  border-radius:14px;
-  display:none;
-  opacity:0;
-  transform: translateY(18px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-  transition: opacity .42s ease, transform .42s ease, background .35s;
-}
-
-/* visible state (JS sets display:block then animates) */
-.section.show {
-  display:block;
-  opacity:1;
-  transform: translateY(0);
-}
-
-/* titles */
-.title{
-  text-align:center;
-  color:var(--primary);
-  font-weight:700;
-  margin:0 0 12px 0;
-}
-
-/* -------------------------
-   CAROUSEL (centered, smooth fade)
-   ------------------------- */
-.gallery-container{
-  width:100%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:12px;
-}
-
-.carousel-wrapper{
-  position:relative;
-  width:85%;
-  max-width:860px;
-  aspect-ratio:16/9;
-  border-radius:14px;
-  overflow:hidden;
-  background: linear-gradient(180deg, rgba(0,0,0,0.03), rgba(255,255,255,0.03));
-  border: 3px solid rgba(0,0,0,0.04);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.06);
-}
-
-/* images absolute stacked */
-.carousel-img{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  opacity:0;
-  transform: scale(1.02);
-  transition: opacity .7s cubic-bezier(.2,.9,.2,1), transform .7s cubic-bezier(.2,.9,.2,1);
-  filter: saturate(0.98) contrast(0.98);
-}
-.carousel-img.active{
-  opacity:1;
-  transform: scale(1);
-}
-
-/* arrows */
-.carousel-btn{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  background: rgba(255,255,255,0.12);
-  color:white;
-  border:none;
-  font-size:1.6rem;
-  padding:10px 14px;
-  border-radius:10px;
-  cursor:pointer;
-  z-index:6;
-  backdrop-filter: blur(4px);
-  transition: opacity .12s, transform .12s;
-}
-.carousel-btn:hover{ transform: translateY(-50%) scale(1.05); opacity:1; }
-#prevBtn{ left:14px; }
-#nextBtn{ right:14px; }
-
-/* dots - only dots */
-.dots{ display:flex; gap:10px; justify-content:center; margin-top:12px; }
-.dot{
-  width:12px; height:12px;
-  border-radius:50%;
-  background: rgba(0,0,0,0.12);
-  cursor:pointer;
-  transition: transform .18s, background .18s;
-}
-.dot.active{
-  background: var(--primary);
-  transform: scale(1.12);
-}
-
-/* -------------------------
-   STORE
-   ------------------------- */
-.store-grid{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap:20px;
-  margin-top:12px;
-}
-.product-card{
-  background: linear-gradient(180deg, var(--card), var(--glass));
-  border-radius:12px;
-  padding:12px;
-  text-align:center;
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-  align-items:center;
-  transition: transform .18s, box-shadow .18s;
-}
-.product-card:hover{ transform: translateY(-6px); box-shadow: 0 18px 36px rgba(0,0,0,0.08); }
-
-.product-card img{ width:100%; max-height:200px; object-fit:contain; border-radius:8px; background:transparent; }
-
-.product-title{ font-weight:700; color:var(--primary); }
-.product-price{ font-weight:600; color:var(--muted); }
-.product-note{ color:#666; font-size:.9rem; }
-
-/* buttons */
-.btn{
-  background: var(--primary);
-  color: white;
-  border: none;
-  padding:8px 12px;
-  border-radius:10px;
-  cursor:pointer;
-  font-weight:700;
-}
-.qty-btn{
-  background:transparent;
-  border:1px solid rgba(0,0,0,0.08);
-  padding:6px 8px;
-  border-radius:8px;
-  cursor:pointer;
-}
-
-/* -------------------------
-   CART overlay & FAB
-   ------------------------- */
-.cart-fab{
-  position:fixed;
-  right:20px;
-  bottom:118px;
-  width:56px;
-  height:56px;
-  border-radius:50%;
-  background: var(--primary);
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow: 0 12px 36px rgba(0,0,0,0.2);
-  cursor:pointer;
-  z-index:1100;
-}
-
-.cart-overlay{
-  position:fixed;
-  right:20px;
-  top:110px;
-  width:320px;
-  max-width:92%;
-  display:none;
-  flex-direction:column;
-  background: var(--card);
-  padding:14px;
-  border-radius:12px;
-  box-shadow:0 18px 40px rgba(0,0,0,0.18);
-  z-index:1200;
-}
-.cart-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
-.cart-items{ max-height:260px; overflow:auto; display:flex; flex-direction:column; gap:8px; padding-right:6px; }
-.cart-item{ display:flex; gap:8px; align-items:center; border-bottom:1px dashed rgba(0,0,0,0.06); padding-bottom:8px; }
-.cart-item img{ width:56px; height:56px; object-fit:cover; border-radius:8px; }
-.cart-total{ font-weight:800; text-align:right; margin-top:6px; color:var(--primary); }
-
-/* -------------------------
-   CHAT
-   ------------------------- */
-.chat-fab{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  width:56px;
-  height:56px;
-  border-radius:50%;
-  background: var(--primary-2);
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow: 0 12px 36px rgba(0,0,0,0.15);
-  cursor:pointer;
-  z-index:1100;
-}
-
-.chat-window{
-  position:fixed;
-  right:20px;
-  bottom:86px;
-  width:320px;
-  max-width:92%;
-  display:none;
-  flex-direction:column;
-  background:var(--card);
-  border-radius:12px;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.14);
-  z-index:1200;
-}
-.chat-header{ background:var(--primary); color:#fff; padding:10px; display:flex; justify-content:space-between; align-items:center; border-top-left-radius:12px; border-top-right-radius:12px; }
-.chat-body{ padding:12px; max-height:260px; overflow:auto; display:flex; flex-direction:column; gap:8px; background: linear-gradient(180deg, rgba(0,0,0,0.02), transparent); }
-.chat-input{ display:flex; gap:8px; padding:10px; border-top:1px solid rgba(0,0,0,0.06); }
-.chat-input input{ flex:1; padding:8px 10px; border-radius:8px; border:1px solid rgba(0,0,0,0.06); }
-
-/* chat bubbles */
-.chat-msg{ max-width:78%; padding:8px 10px; border-radius:12px; font-size:.95rem; line-height:1.2; }
-.bot{ background: var(--card); border:1px solid rgba(0,0,0,0.04); align-self:flex-start; color:var(--text); }
-.user{ background:var(--primary); color:#fff; align-self:flex-end; }
-
-/* small screens */
 @media (max-width:720px){
-  .carousel-wrapper{ width:94%; aspect-ratio:4/3; }
-  header{ padding:40px 12px; }
-  .logo-font{ font-size:2.8rem; }
-  .menu span{ display:inline-block; margin:0 10px; }
-  .cart-overlay{ right:12px; top:90px; width:280px; }
-  .chat-window{ right:12px; bottom:78px; width:90%; }
+	.logo-font{ font-size:3.8rem; }
+}
+
+
+/* ESTILOS DEL FORMULARIO DE CONTACTO */
+.contact-form-container{
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 20px;
+	border: 1px solid rgba(0,0,0,0.08);
+	border-radius: 12px;
+	background: linear-gradient(180deg, var(--glass), transparent);
+}
+.form-group{
+	margin-bottom: 15px;
+	display: flex;
+	flex-direction: column;
+}
+.form-group label{
+	font-weight: 600;
+	margin-bottom: 5px;
+	color: var(--primary);
+	font-size: 0.95rem;
+}
+.form-group input,
+.form-group textarea{
+	padding: 10px 12px;
+	border: 1px solid rgba(0,0,0,0.1);
+	border-radius: 8px;
+	font-family: "Poppins", sans-serif;
+	font-size: 1rem;
+	background: var(--card); /* Fondo para modo claro/oscuro */
+	color: var(--text);
+	transition: border-color .2s;
+}
+.form-group input:focus,
+.form-group textarea:focus{
+	border-color: var(--primary-2);
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(95, 33, 25, 0.15);
+}
+.contact-btn{
+	width: 100%;
+	padding: 12px;
+	margin-top: 10px;
+	font-size: 1.1rem;
 }
