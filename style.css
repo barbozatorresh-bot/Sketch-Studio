@@ -1,207 +1,184 @@
-/* --------------------- */
-/* PALETA PRINCIPAL      */
-/* --------------------- */
-:root {
-    --pine: #2C3418;
-    --blue: #94A59C;
-    --bone: #DDDFC2;
-    --white: #ffffff;
-    --dark: #1a1a1a;
+/* PALETA PRINCIPAL */
+:root{
+  --primary:#5F2119;          /* Philippine Brown */
+  --primary-light:#8c3a30;
+  --bg:#ffffff;
+  --text:#2a1b19;
+  --card:#ffffff;
+  --accent:#d9c5ba;
 }
 
-/* --------------------- */
-/* RESETEO GENERAL       */
-/* --------------------- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* MODO OSCURO */
+.dark{
+  --bg:#1a0f0d;
+  --text:#f5e9e7;
+  --card:#2c1c1a;
+  --accent:#b49a90;
 }
 
-body {
-    background: var(--bone);
-    font-family: "Poppins", sans-serif;
-    color: var(--pine);
-    overflow-x: hidden;
+body{
+  margin:0;
+  font-family:"Poppins", sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  transition:.3s;
 }
 
-/* --------------------- */
-/* HEADER                */
-/* --------------------- */
-header {
-    width: 100%;
-    padding: 20px 40px;
-    background: var(--pine);
-    color: var(--bone);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* Tipografía estilo Berta Melanie */
+.logo-font{
+  font-family:"Great Vibes", cursive;
+  font-size:4rem;
+  color:white;
 }
 
-header h1 {
-    font-size: 28px;
-    letter-spacing: 1px;
+/* HEADER */
+header{
+  background:var(--primary);
+  text-align:center;
+  padding:60px 20px;
+  color:white;
+  position:relative;
 }
 
-/* ICONO CARRITO */
-#cart-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    position: relative;
+.theme-btn{
+  position:absolute;
+  right:20px;
+  top:20px;
+  background:white;
+  color:var(--primary);
+  border:none;
+  padding:8px 14px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
 }
 
-#cart-btn img {
-    width: 32px;
-    filter: brightness(0) invert(1);
+/* MENU */
+.menu{
+  text-align:center;
+  margin:25px 0;
+}
+.menu span{
+  margin:0 20px;
+  cursor:pointer;
+  font-weight:700;
+  color:var(--primary);
 }
 
-#cart-count {
-    position: absolute;
-    top: -5px;
-    right: -10px;
-    background: crimson;
-    color: white;
-    padding: 3px 7px;
-    border-radius: 50%;
-    font-size: 12px;
+/* SECCIONES */
+.section{
+  width:80%;
+  margin:20px auto;
+  background:var(--card);
+  padding:20px;
+  border-radius:14px;
+  display:none;
+  box-shadow:0 0 10px #0002;
 }
 
-/* --------------------- */
-/* MENÚ DEL CARRITO      */
-/* --------------------- */
-#cart-menu {
-    position: fixed;
-    right: -350px;
-    top: 0;
-    height: 100vh;
-    width: 320px;
-    background: var(--white);
-    box-shadow: -4px 0 15px rgba(0,0,0,0.2);
-    padding: 20px;
-    transition: right 0.35s ease;
-    z-index: 999;
+.title{
+  text-align:center;
+  color:var(--primary);
+  font-weight:700;
 }
 
-#cart-menu.open {
-    right: 0;
+/* GALERÍA */
+.carousel-wrapper{
+  position:relative;
+  width:80%;
+  margin:auto;
+  overflow:hidden;
+  border-radius:12px;
 }
 
-#cart-menu h2 {
-    margin-bottom: 15px;
-    font-size: 22px;
-    color: var(--pine);
+.carousel-img{
+  width:100%;
+  display:none;
+}
+.carousel-img.active{
+  display:block;
 }
 
-/* ITEMS DEL CARRITO */
-#cart-items {
-    list-style: none;
-    margin-bottom: 20px;
+/* DOTS */
+.dot{
+  width:12px; height:12px;
+  background:#bbb;
+  border-radius:50%;
+  display:inline-block;
+  cursor:pointer;
+}
+.dot.active{
+  background:var(--primary);
 }
 
-.cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: var(--bone);
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 10px;
+/* STORE */
+.store-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+}
+.product-card{
+  background:var(--card);
+  padding:12px;
+  border-radius:12px;
+  text-align:center;
+  box-shadow:0 0 10px #0002;
 }
 
-.cart-item .actions button {
-    margin-left: 5px;
-    border: none;
-    background: var(--blue);
-    color: var(--pine);
-    padding: 4px 8px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.2s ease;
+/* BOTONES */
+.btn{
+  background:var(--primary);
+  color:white;
+  border:none;
+  padding:8px 12px;
+  border-radius:8px;
+  cursor:pointer;
+  margin-top:8px;
 }
 
-.cart-item .actions button:hover {
-    background: var(--pine);
-    color: var(--bone);
+/* CARRITO */
+.cart-fab{
+  position:fixed;
+  right:20px;
+  bottom:100px;
+  background:var(--primary);
+  color:white;
+  padding:14px;
+  border-radius:50%;
+  cursor:pointer;
 }
 
-/* TOTAL */
-.cart-total-box {
-    font-size: 18px;
-    padding-top: 10px;
-    border-top: 2px solid var(--pine);
+.cart-overlay{
+  position:fixed;
+  right:20px;
+  top:100px;
+  width:300px;
+  background:var(--card);
+  padding:14px;
+  border-radius:12px;
+  box-shadow:0 0 15px #0004;
+  display:none;
 }
 
-/* --------------------- */
-/* GALERÍA DE PRODUCTOS  */
-/* --------------------- */
-.products {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px;
-    padding: 40px;
+/* CHATBOT */
+.chat-fab{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  background:var(--primary-light);
+  color:white;
+  padding:14px;
+  border-radius:50%;
+  cursor:pointer;
 }
 
-.product-card {
-    background: var(--white);
-    border-radius: 14px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    overflow: hidden;
-    transition: transform 0.25s ease;
-    cursor: pointer;
-}
-
-.product-card:hover {
-    transform: translateY(-6px);
-}
-
-.product-card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-}
-
-.product-card .info {
-    padding: 15px 20px;
-}
-
-.product-card .info h3 {
-    font-size: 20px;
-    margin-bottom: 5px;
-}
-
-.product-card .info p {
-    font-size: 16px;
-    margin-bottom: 15px;
-    color: var(--dark);
-}
-
-.add-to-cart {
-    width: 100%;
-    padding: 12px;
-    background: var(--pine);
-    color: var(--bone);
-    text-align: center;
-    border: none;
-    border-radius: 0 0 14px 14px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: 0.25s ease;
-}
-
-.add-to-cart:hover {
-    background: #1e2610;
-}
-
-/* --------------------- */
-/* TRANSICIONES EXTRA    */
-/* --------------------- */
-.fade-in {
-    animation: fade 0.5s ease forwards;
-}
-
-@keyframes fade {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
+.chat-window{
+  position:fixed;
+  right:20px;
+  bottom:80px;
+  width:300px;
+  background:var(--card);
+  border-radius:12px;
+  display:none;
+  box-shadow:0 0 15px #0005;
 }
