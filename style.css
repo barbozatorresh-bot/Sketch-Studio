@@ -1,104 +1,97 @@
+/* PALETA OFICIAL */
 :root {
-    --pine: #2C3418;
-    --blue: #94A59C;
-    --bone: #DDDFC2;
-    --black: #1A1A1A;
-    --white: #F8F8F0;
+    --dark-vanilla: #D7C1A8;
+    --beaver: #A28C75;
+    --quincy: #6C5141;
+    --falu-red: #702220;
+    --phil-brown: #5F2119; /* PRINCIPAL */
 }
 
-/* RESET */
+/* RESETEO */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+    font-family: "Georgia", serif;
 }
 
 body {
-    background-color: var(--bone);
-    color: var(--black);
+    background: var(--dark-vanilla);
+    color: var(--phil-brown);
 }
 
 /* HEADER */
 header {
-    background: var(--pine);
-    color: var(--white);
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    text-align: center;
+    background: var(--phil-brown);
+    color: white;
+    padding: 25px 0;
 }
 
 header h1 {
-    font-size: 28px;
+    font-size: 40px;
+    letter-spacing: 2px;
 }
 
 nav a {
-    margin-left: 20px;
-    color: var(--white);
+    margin: 0 12px;
+    color: white;
     text-decoration: none;
     font-weight: bold;
 }
 
-/* HERO */
-.hero {
-    text-align: center;
-    padding: 60px;
-    background: var(--blue);
-    color: var(--black);
+nav a:hover {
+    color: var(--beaver);
 }
 
-.hero h2 {
-    font-size: 32px;
+/* SECCIONES */
+.section {
+    padding: 40px;
+    border-bottom: 3px solid var(--beaver);
+}
+
+.section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
 }
 
 /* GALERÍA */
 .galeria {
-    padding: 40px;
-    text-align: center;
+    display: flex;
+    gap: 20px;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.grid img {
-    width: 100%;
+.galeria img {
+    width: 250px;
     border-radius: 10px;
-    border: 3px solid var(--pine);
+    border: 4px solid var(--quincy);
+    transition: transform 0.3s;
 }
 
-/* COMISIONES */
-.comisiones {
-    padding: 40px;
-    background: var(--white);
-    text-align: center;
+.galeria img:hover {
+    transform: scale(1.05);
+}
+
+/* STORE */
+.producto {
+    margin-bottom: 25px;
+}
+
+.producto img {
+    width: 200px;
+    border-radius: 12px;
+    border: 3px solid var(--falu-red);
 }
 
 button {
-    padding: 12px 20px;
-    background: var(--pine);
-    color: var(--white);
+    padding: 8px 15px;
+    background: var(--phil-brown);
+    color: white;
     border: none;
+    border-radius: 6px;
     cursor: pointer;
-    border-radius: 8px;
-    font-size: 16px;
 }
 
-/* CONTACTO */
-.contacto {
-    padding: 40px;
-    background: var(--blue);
-    text-align: center;
-}
-
-footer {
-    background: var(--pine);
-    color: var(--white);
-    text-align: center;
-    padding: 15px;
-    margin-top: 20px;
+button:hover {
+    background: var(--quincy);
 }
