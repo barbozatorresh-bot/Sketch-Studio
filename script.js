@@ -1,80 +1,132 @@
-/* Carrusel */
+/* ===========================
+   CAMBIO DE SECCIONES
+=========================== */
+function toggle(sectionId) {
+    document.querySelectorAll(".section").forEach(sec => {
+        sec.style.display = "none";
+        sec.style.opacity = 0;
+    });
+
+    const section = document.getElementById(sectionId);
+    section.style.display = "block";
+    setTimeout(() => section.style.opacity = 1, 20);
+}
+
+/* ===========================
+   SLIDER CON PUNTITOS
+=========================== */
 let index = 0;
-const slides = document.querySelectorAll(".carousel img");
+const images = document.querySelectorAll(".carousel-img");
 const dots = document.querySelectorAll(".dot");
 
-function showSlide(i) {
-    slides.forEach(s => s.classList.remove("active"));
+function showSlide(n) {
+    images.forEach(img => img.classList.remove("active"));
     dots.forEach(d => d.classList.remove("active"));
-    slides[i].classList.add("active");
-    dots[i].classList.add("active");
+
+    images[n].classList.add("active");
+    dots[n].classList.add("active");
 }
 
-function goToSlide(i) {
-    index = i;
-    showSlide(i);
-}
-
-setInterval(() => {
-    index = (index + 1) % slides.length;
+document.getElementById("prevBtn").onclick = () => {
+    index = (index - 1 + images.length) % images.length;
     showSlide(index);
-}, 3000);
+};
 
-/* Carrito */
-let cart = [];
+document.getElementById("nextBtn").onclick = () => {
+    index = (index + 1) % images.length;
+    showSlide(index);
+};
 
-function addToCart(name, price) {
-    cart.push({ name, price });
+dots.forEach(dot => {
+    dot.onclick = () => {
+        index = Number(dot.dataset.index);
+        showSlide(index);
+    };
+});
+
+/* ===========================
+   CARRITO
+=========================== */
+let cart = {};
+
+function addToCart(id) {
+    cart[id] = (cart[id] || 0) + 1;
     updateCart();
 }
 
 function updateCart() {
-    const list = document.getElementById("cart-items");
-    const total = document.getElementById("cart-total");
+    const itemsDiv = document.getElementById("cartItems");
+    itemsDiv.innerHTML = "";
 
-    list.innerHTML = "";
-    let sum = 0;
+    let total = 0;
 
-    cart.forEach(item => {
-        list.innerHTML += `<li>${item.name} - S/ ${item.price}</li>`;
-        sum += item.price;
-    });
+    for (let id in cart) {
+        let qty = cart[id];
+        let price = document.querySelector(`[data-id="${id}"]`).dataset.price;
+        total += qty * price;
 
-    total.textContent = sum;
-}
-
-function openCart() {
-    document.getElementById("cart-window").style.display = "block";
-}
-
-function closeCart() {
-    document.getElementById("cart-window").style.display = "none";
-}
-
-/* Chatbot simple */
-
-function toggleChat() {
-    const bot = document.getElementById("chatbot");
-    bot.style.display = bot.style.display === "flex" ? "none" : "flex";
-}
-
-function sendMessage(event) {
-    if (event.key === "Enter") {
-        let input = document.getElementById("chat-input");
-        let text = input.value.trim();
-        if (text === "") return;
-
-        let body = document.getElementById("chat-body");
-        body.innerHTML += `<p><b>Tú:</b> ${text}</p>`;
-
-        let response = "No entendí, pero pronto seré más inteligente 😅";
-
-        if (text.includes("precio")) response = "Los precios están en la tienda 💖";
-        if (text.includes("hola")) response = "¡Hola! Bienvenida a Kaychan Store 💕";
-
-        body.innerHTML += `<p><b>Bot:</b> ${response}</p>`;
-
-        input.value = "";
-        body.scrollTop = body.scrollHeight;
+        itemsDiv.innerHTML += `
+            <div class="cart-item">
+                <span>${id} (${qty})</span>
+                <button class="qty-btn" onclick="removeItem('${id}')">−</button>
+            </div>
+        `;
     }
+
+    document.getElementById("cartTotal").innerText = `Total: S/ ${total.toFixed(2)}`;
+}
+
+function removeItem(id) {
+    if (cart[id]) {
+        cart[id]--;
+        if (cart[id] === 0) delete cart[id];
+    }
+    updateCart();
+}
+
+function toggleCart() {
+    const cartOverlay = document.getElementById("cartOverlay");
+    cartOverlay.style.display = cartOverlay.style.display === "block" ? "none" : "block";
+}
+
+function clearCart() {
+    cart = {};
+    updateCart();
+}
+
+function checkout() {
+    alert("Gracias por tu compra ❤️");
+}
+
+/* ===========================
+   CHATBOT
+=========================== */
+function toggleChat() {
+    const chat = document.getElementById("chatWindow");
+    chat.style.display = chat.style.display === "block" ? "none" : "block";
+}
+
+function sendMessage() {
+    const input = document.getElementById("chatInput");
+    const text = input.value.trim();
+    if (!text) return;
+
+    addMessage(text, "user");
+    input.value = "";
+
+   let reply = "No entendí eso 😅";
+
+   textLower = text.toLowerCase();
+   if (textLower.includes("precio")) reply = "Los precios están en cada producto. ❤️";
+   if (textLower.includes("envio") || textLower.includes("envío")) reply = "Hago envíos nacionales por Olva.";
+   if (textLower.includes("pago")) reply = "Métodos de pago: Yape, Plin.";
+   if (textLower.includes("stock")) reply = "Siempre repongo stock 😄";
+
+    setTimeout(() => addMessage(reply, "bot"), 400);
+}
+
+function addMessage(msg, type) {
+    const body = document.getElementById("chatBody");
+    body.innerHTML += `<div class="chat-msg ${type}">${msg}</div>`;
+    body.scrollTop = body.scrollHeight;
 }
