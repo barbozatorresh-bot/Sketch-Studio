@@ -2,164 +2,126 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sketch Studio</title>
 
-  <!-- Estilos externos -->
-  <link rel="stylesheet" href="style.css">
+  <!-- Fuente cursiva estilo Berta Melanie -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap">
+  <!-- Fuente general -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap">
 
-  <!-- JavaScript externo -->
-  <script src="script.js" defer></script>
+  <!-- Estilos -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <h1 class="site-title">SKETCH STUDIO</h1>
-        <p class="site-tag">Arte, diseño y estilo propio</p>
-      </div>
+<header>
+  <h1 class="logo-font">SKETCH STUDIO</h1>
+  <p>Arte, diseño y estilo propio</p>
 
-      <nav class="main-nav" aria-label="Menú principal">
-        <button class="nav-toggle" aria-expanded="false" aria-controls="main-menu">☰</button>
-        <ul id="main-menu" class="nav-list">
-          <li><button class="nav-link" data-target="about">Sobre mí</button></li>
-          <li><button class="nav-link" data-target="gallery">Galería</button></li>
-          <li><button class="nav-link" data-target="store">Store</button></li>
-          <li><button class="nav-link" data-target="contact">Contacto</button></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <button id="themeToggle" class="theme-btn">🌙 Modo Oscuro</button>
+</header>
 
-  <!-- MAIN CONTENT (secciones ocultables con transición; style + script lo harán suave) -->
-  <main class="site-main container">
+<!-- MENU -->
+<div class="menu">
+  <span onclick="toggle('about')">Sobre mí</span>
+  <span onclick="toggle('gallery')">Galería</span>
+  <span onclick="toggle('store')">Store</span>
+  <span onclick="toggle('contact')">Contacto</span>
+</div>
 
-    <!-- SOBRE MÍ -->
-    <section id="about" class="page section show" aria-labelledby="about-title">
-      <h2 id="about-title">Sobre mí</h2>
-      <p>Hola, soy la artista detrás de Sketch Studio. Bienvenido a mi mundo creativo.</p>
-    </section>
+<!-- SOBRE MÍ -->
+<div id="about" class="section" style="display:block; opacity:1;">
+  <p>Hola, soy la artista detrás de Sketch Studio. Bienvenido a mi mundo creativo.</p>
+</div>
 
-    <!-- GALERÍA -->
-    <section id="gallery" class="page section" aria-labelledby="gallery-title">
-      <h2 id="gallery-title">Galería</h2>
+<!-- GALERÍA -->
+<div id="gallery" class="section">
+  <h2 class="title">Gallery</h2>
 
-      <!-- CARRUSEL (imagenes dentro de carpeta images/) -->
-      <div class="carousel" aria-roledescription="carousel" aria-label="Galería de ilustraciones">
-        <div class="carousel-track">
-          <img src="images/img1.jpg" alt="Ilustración 1" class="carousel-slide active" data-index="0">
-          <img src="images/img2.jpg" alt="Ilustración 2" class="carousel-slide" data-index="1">
-          <img src="images/img3.jpg" alt="Ilustración 3" class="carousel-slide" data-index="2">
-        </div>
+  <div class="gallery-container">
+    <div class="carousel-wrapper">
+      <img src="images/img1.jpg" class="carousel-img active">
+      <img src="images/img2.jpg" class="carousel-img">
+      <img src="images/img3.jpg" class="carousel-img">
 
-        <!-- flechas -->
-        <button id="prevBtn" class="carousel-btn prev" aria-label="Anterior">‹</button>
-        <button id="nextBtn" class="carousel-btn next" aria-label="Siguiente">›</button>
-
-        <!-- puntos (solo puntos) -->
-        <div class="carousel-dots" role="tablist" aria-label="Seleccionar imagen">
-          <button class="dot active" data-index="0" aria-selected="true" role="tab"></button>
-          <button class="dot" data-index="1" aria-selected="false" role="tab"></button>
-          <button class="dot" data-index="2" aria-selected="false" role="tab"></button>
-        </div>
-      </div>
-    </section>
-
-    <!-- TIENDA / STORE -->
-    <section id="store" class="page section" aria-labelledby="store-title">
-      <h2 id="store-title">Store</h2>
-
-      <p class="store-intro">Productos disponibles (nombres en inglés):</p>
-
-      <div class="store-grid" role="list">
-        <!-- Sticker Pack -->
-        <article class="product-card" role="listitem" data-id="sticker" data-price="5.00">
-          <img src="images/store/sticker.jpg" alt="Sticker Pack" class="product-img">
-          <h3 class="product-title">Sticker Pack</h3>
-          <div class="product-price">S/ 5.00 <span class="muted"> (15 stickers)</span></div>
-          <div class="product-note">Vinyl stickers, waterproof</div>
-          <div class="product-actions">
-            <label class="qty-label">Cantidad:
-              <input type="number" class="qty-input" min="1" value="1" aria-label="Cantidad sticker">
-            </label>
-            <button class="btn add-cart" data-product="sticker">Add to cart</button>
-          </div>
-        </article>
-
-        <!-- Keychain -->
-        <article class="product-card" role="listitem" data-id="keychain" data-price="8.00">
-          <img src="images/store/keychain.jpg" alt="Keychain" class="product-img">
-          <h3 class="product-title">Keychain</h3>
-          <div class="product-price">S/ 8.00</div>
-          <div class="product-note">Acrylic keychain, 4 cm</div>
-          <div class="product-actions">
-            <label class="qty-label">Cantidad:
-              <input type="number" class="qty-input" min="1" value="1" aria-label="Cantidad keychain">
-            </label>
-            <button class="btn add-cart" data-product="keychain">Add to cart</button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- CONTACTO -->
-    <section id="contact" class="page section" aria-labelledby="contact-title">
-      <h2 id="contact-title">Contacto</h2>
-      <p>Correo: sketchstudio@gmail.com<br>Instagram: @sketchstudio</p>
-    </section>
-
-  </main>
-
-  <!-- CARRITO FLOTANTE (botón) -->
-  <button id="cartFab" class="cart-fab" aria-label="Abrir carrito">🛒</button>
-
-  <!-- OVERLAY DEL CARRITO (panel) -->
-  <aside id="cartOverlay" class="cart-overlay" aria-hidden="true" role="dialog" aria-label="Carrito de compras">
-    <div class="cart-header">
-      <strong>Tu carrito</strong>
-      <button id="closeCart" class="btn icon" aria-label="Cerrar carrito">✕</button>
+      <button id="prevBtn" class="carousel-btn">&#10094;</button>
+      <button id="nextBtn" class="carousel-btn">&#10095;</button>
     </div>
 
-    <div id="cartItems" class="cart-items" aria-live="polite">
-      <!-- Items se inyectan por JS -->
-      <div class="cart-empty">Tu carrito está vacío</div>
-    </div>
-
-    <div class="cart-footer">
-      <div class="cart-total">Total: <span id="cartTotal">S/ 0.00</span></div>
-      <div class="cart-buttons">
-        <button id="checkoutBtn" class="btn primary">Comprar</button>
-        <button id="clearCart" class="btn">Vaciar</button>
-      </div>
-    </div>
-  </aside>
-
-  <!-- CHATBOT (burbuja) -->
-  <button id="chatFab" class="chat-fab" aria-label="Abrir chat">💬</button>
-
-  <!-- VENTANA CHAT -->
-  <div id="chatWindow" class="chat-window" aria-hidden="true" role="dialog" aria-label="Chat de soporte">
-    <div class="chat-header">
-      <strong>Chat — Sketch Studio</strong>
-      <button id="closeChat" class="btn icon" aria-label="Cerrar chat">✕</button>
-    </div>
-
-    <div id="chatBody" class="chat-body" aria-live="polite">
-      <div class="chat-msg bot">Hola 👋 ¿En qué puedo ayudarte? Palabras: precio, envio, pago, stock</div>
-    </div>
-
-    <div class="chat-input">
-      <input id="chatInput" type="text" placeholder="Escribe aquí..." aria-label="Mensaje chat">
-      <button id="sendChat" class="btn">Enviar</button>
+    <div class="dots">
+      <span class="dot active" data-index="0"></span>
+      <span class="dot" data-index="1"></span>
+      <span class="dot" data-index="2"></span>
     </div>
   </div>
+</div>
 
-  <!-- Mensaje para usuarios sin JS -->
-  <noscript>
-    <div class="no-js-warning">Activa JavaScript para que la página funcione correctamente.</div>
-  </noscript>
+<!-- STORE -->
+<div id="store" class="section">
+  <h2 class="title">Store</h2>
+  <p>Productos disponibles:</p>
 
+  <div class="store-grid">
+    <div class="product-card" data-id="sticker" data-price="5.00">
+      <img src="images/store/sticker.jpg">
+      <div class="product-title">Sticker Pack</div>
+      <div class="product-price">S/ 5.00 (15 stickers)</div>
+      <button class="btn" onclick="addToCart('sticker')">Add to cart</button>
+    </div>
+
+    <div class="product-card" data-id="keychain" data-price="8.00">
+      <img src="images/store/keychain.jpg">
+      <div class="product-title">Keychain</div>
+      <div class="product-price">S/ 8.00</div>
+      <button class="btn" onclick="addToCart('keychain')">Add to cart</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACTO -->
+<div id="contact" class="section">
+  <p>Correo: sketchstudio@gmail.com<br>Instagram: @sketchstudio</p>
+</div>
+
+<!-- CARRITO -->
+<div class="cart-fab" onclick="toggleCart()">🛒</div>
+
+<div id="cartOverlay" class="cart-overlay">
+  <div class="cart-header">
+    <strong>Tu carrito</strong>
+    <button onclick="toggleCart()" class="qty-btn">✕</button>
+  </div>
+
+  <div id="cartItems" class="cart-items"></div>
+
+  <div class="cart-total" id="cartTotal">Total: S/ 0.00</div>
+
+  <div class="cart-actions">
+    <button class="btn" onclick="checkout()">Comprar</button>
+    <button class="qty-btn" onclick="clearCart()">Vaciar</button>
+  </div>
+</div>
+
+<!-- CHATBOT -->
+<div class="chat-fab" onclick="toggleChat()">💬</div>
+
+<div id="chatWindow" class="chat-window">
+  <div class="chat-header">
+    Chat — Sketch Studio
+    <button onclick="toggleChat()" class="qty-btn">✕</button>
+  </div>
+
+  <div id="chatBody" class="chat-body">
+    <div class="chat-msg bot">Hola 👋 ¿En qué puedo ayudarte?</div>
+  </div>
+
+  <div class="chat-input">
+    <input id="chatInput" placeholder="Escribe aquí..." />
+    <button class="btn" onclick="sendMessage()">Enviar</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
