@@ -4,50 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sketch Studio</title>
-
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
 </head>
 <body>
 
 <header>
     <h1>Sketch Studio</h1>
     <nav>
+        <a href="#inicio">Inicio</a>
         <a href="#galeria">Galería</a>
-        <a href="#comisiones">Comisiones</a>
-        <a href="#contacto">Contacto</a>
+        <a href="#store">Store</a>
+        <a href="#sobre-mi">Sobre mí</a>
     </nav>
 </header>
 
-<section class="hero">
-    <h2>Bienvenido a mi mundo artístico</h2>
-    <p>Arte digital, ilustraciones y comisiones personalizadas.</p>
+<section id="inicio" class="section">
+    <h2>Bienvenido</h2>
+    <p>Arte digital con estilo único ✨</p>
 </section>
 
-<section id="galeria" class="galeria">
+<section id="galeria" class="section">
     <h2>Galería</h2>
-    <div class="grid">
+
+    <div class="galeria">
         <img src="images/img1.jpg" alt="Arte 1">
         <img src="images/img2.jpg" alt="Arte 2">
         <img src="images/img3.jpg" alt="Arte 3">
     </div>
 </section>
 
-<section id="comisiones" class="comisiones">
-    <h2>Comisiones</h2>
-    <p>Solicita tu ilustración personalizada llenando el formulario.</p>
-    <button id="btnComision">Solicitar comisión</button>
+<section id="store" class="section">
+    <h2>Store</h2>
+
+    <div class="producto">
+        <img src="images/img1.jpg" alt="Producto 1">
+        <p>Producto 1 – S/ 10</p>
+        <button onclick="agregarCarrito(10)">Comprar</button>
+    </div>
+
+    <div class="producto">
+        <img src="images/img2.jpg" alt="Producto 2">
+        <p>Producto 2 – S/ 15</p>
+        <button onclick="agregarCarrito(15)">Comprar</button>
+    </div>
+
+    <div class="producto">
+        <img src="images/img3.jpg" alt="Producto 3">
+        <p>Producto 3 – S/ 20</p>
+        <button onclick="agregarCarrito(20)">Comprar</button>
+    </div>
+
+    <h3>Carrito</h3>
+    <p>Total: S/ <span id="total">0</span></p>
 </section>
 
-<section id="contacto" class="contacto">
-    <h2>Contacto</h2>
-    <p>Instagram: @sketchstudio</p>
-    <p>Email: contacto@sketch.com</p>
+<section id="sobre-mi" class="section">
+    <h2>Sobre mí</h2>
+    <p>Soy una artista digital apasionada por el estilo vintage.</p>
 </section>
 
-<footer>
-    <p>© 2025 Sketch Studio</p>
-</footer>
-
+<script src="script.js"></script>
 </body>
 </html>
+
