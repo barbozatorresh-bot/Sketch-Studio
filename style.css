@@ -1,170 +1,284 @@
+/* ================================
+   🎨 PALETA DE COLORES
+================================ */
+:root {
+    --dark-vanilla: #D7C1A8;
+    --beaver: #A28C75;
+    --quincy: #6C5141;
+    --falu: #7C2220;
+    --philippine: #5F2119;
+
+    --bg: var(--dark-vanilla);
+    --text: var(--philippine);
+    --accent: var(--beaver);
+    --dark: var(--quincy);
+    --btn: var(--falu);
+}
+
+/* ================================
+   🌐 ESTILO GLOBAL
+================================ */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f6f6f6;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    background: var(--bg);
+    color: var(--text);
 }
 
-/* Header */
 header {
-    background: #ffb3d9;
-    padding: 20px;
     text-align: center;
-    font-size: 28px;
-    font-weight: bold;
+    padding: 25px;
+    background: var(--accent);
+    color: white;
+    border-bottom: 4px solid var(--dark);
 }
 
-/* Carrusel */
-.carousel-container {
-    width: 90%;
-    margin: auto;
-    text-align: center;
+h1 {
+    margin: 0;
+    font-size: 2.3rem;
 }
 
-.carousel {
-    position: relative;
-    width: 100%;
-    height: 300px;
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 12px;
+    background: var(--dark);
 }
 
-.carousel img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 15px;
-    opacity: 0;
-    position: absolute;
-    transition: opacity 0.6s;
-}
-
-.carousel img.active {
-    opacity: 1;
-}
-
-.dots {
-    margin-top: 10px;
-}
-
-.dot {
-    height: 12px;
-    width: 12px;
-    margin: 5px;
-    background: #aaa;
-    border-radius: 50%;
-    display: inline-block;
+.menu span {
+    color: white;
     cursor: pointer;
-    transition: 0.3s;
+    font-size: 1.1rem;
+}
+.menu span:hover {
+    color: var(--bg);
 }
 
-.dot.active {
-    background: #ff4fa3;
+.section {
+    display: none;
+    opacity: 0;
+    transition: opacity .4s ease;
+    padding: 20px;
 }
 
-/* Productos */
 .center {
     text-align: center;
 }
 
-.products {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin: 30px 0;
-}
-
-.product {
-    background: white;
-    width: 200px;
-    padding: 15px;
-    border-radius: 10px;
+/* ================================
+   🖼 GALERÍA
+================================ */
+.gallery-container {
+    width: 80%;
+    margin: auto;
     text-align: center;
 }
 
-.product img {
+.carousel-wrapper {
+    position: relative;
     width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-button {
-    padding: 10px;
-    border: none;
-    background: #ff4fa3;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-/* Carrito */
-.cart-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #ff4fa3;
-    padding: 15px;
-    font-size: 20px;
-    border-radius: 50%;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.cart-window {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    width: 250px;
-    background: white;
-    border-radius: 10px;
-    padding: 15px;
-    display: none;
-}
-
-.cart-window ul {
-    padding: 0;
-}
-
-/* Chatbot */
-.chat-toggle {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background: #4f8bff;
-    padding: 15px;
-    font-size: 20px;
-    border-radius: 50%;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.chatbot {
-    width: 260px;
     height: 320px;
+}
+
+.carousel-img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: none;
+}
+
+.carousel-img.active {
+    display: block;
+}
+
+/* Botones */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--dark);
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+#prevBtn { left: 10px; }
+#nextBtn { right: 10px; }
+
+/* PUNTITOS */
+.dots {
+    margin-top: 10px;
+}
+.dot {
+    height: 14px;
+    width: 14px;
+    display: inline-block;
+    background: var(--accent);
+    border-radius: 50%;
+    margin: 4px;
+    cursor: pointer;
+}
+.dot.active {
+    background: var(--btn);
+}
+
+/* ================================
+   🛒 STORE
+================================ */
+.store-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap: 20px;
+    padding: 15px;
+}
+
+.product-card {
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px #00000022;
+    text-align: center;
+}
+
+.product-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.product-title {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.product-price {
+    margin: 5px 0 10px;
+    color: var(--dark);
+}
+
+.btn {
+    padding: 8px 12px;
+    background: var(--btn);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.btn:hover {
+    opacity: .8;
+}
+
+/* ================================
+   🛒 CARRITO
+================================ */
+.cart-fab {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    background: var(--btn);
+    color: white;
+    padding: 16px;
+    font-size: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.cart-overlay {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 280px;
+    background: white;
+    border-top-left-radius: 12px;
+    border-left: 1px solid #ccc;
+    padding: 15px;
+    display: none;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.cart-items { margin-bottom: 10px; }
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+}
+
+.qty-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--btn);
+}
+
+.cart-total {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* ================================
+   💬 CHATBOT
+================================ */
+.chat-fab {
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    background: var(--dark);
+    padding: 16px;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.chat-window {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 290px;
     background: white;
     border-radius: 10px;
-    position: fixed;
-    bottom: 80px;
-    left: 20px;
     display: none;
-    flex-direction: column;
+    box-shadow: 0 0 10px #00000033;
 }
 
 .chat-header {
-    background: #4f8bff;
-    padding: 10px;
+    background: var(--dark);
     color: white;
-    border-radius: 10px 10px 0 0;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .chat-body {
-    flex: 1;
-    padding: 10px;
+    max-height: 230px;
     overflow-y: auto;
+    padding: 10px;
 }
 
-#chat-input {
-    border: none;
+.chat-msg {
+    background: var(--accent);
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    max-width: 80%;
+}
+.chat-msg.user {
+    background: var(--btn);
+    margin-left: auto;
+}
+.chat-input {
+    display: flex;
     padding: 10px;
-    width: 100%;
+}
+.chat-input input {
+    flex: 1;
+    padding: 6px;
 }
