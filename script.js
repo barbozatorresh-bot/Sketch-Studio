@@ -1,3 +1,6 @@
-document.getElementById("btnComision").addEventListener("click", () => {
-    alert("✨ Gracias por tu interés en una comisión! Escríbeme por Instagram.");
-});
+let total = 0;
+
+function agregarCarrito(precio) {
+    total += precio;
+    document.getElementById("total").textContent = total;
+}
