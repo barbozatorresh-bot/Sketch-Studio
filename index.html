@@ -1,17 +1,3 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>Sketch Studio</title>
-
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap">
-
-	<link rel="stylesheet" href="style.css">
-
-	<script src="script.js" defer></script>
-</head>
 <body>
 
 <header>
@@ -29,47 +15,10 @@
 </div>
 
 <section id="about" class="section" style="display:block; opacity:1;">
-	<h2 class="title">Mi Viaje Creativo</h2>
-	<p>¡Hola! Soy la mente y el pincel detrás de **Sketch Studio**. Aunque mi formación es en un campo que requiere lógica y estructura, mi verdadero escape y pasión reside en la creación visual. Mi arte es el punto donde la **creatividad libre** se encuentra con la **precisión y el detalle**.</p>
-	<p>Para mí, dibujar y diseñar no es solo un *hobby*, es una forma de traducir el mundo complejo en algo bello, tangible y lleno de emoción. Cada pieza está creada con una mezcla de intuición artística y una mente que valora la claridad y la composición. Aquí no encontrarás títulos, sino **dedicación** y un **estilo propio** que evoluciona con cada trazo.</p>
-	<p style="text-align: center; margin-top: 20px;">*Gracias por acompañarme en esta exploración de arte y diseño.*</p>
-</section>
-
-<section id="gallery" class="section">
-	<h2 class="title">Gallery</h2>
-	<div class="gallery-container">
-		<div class="carousel-wrapper">
-			<img src="images/img1.jpg" class="carousel-img active">
-			<img src="images/img2.jpg" class="carousel-img">
-			<img src="images/img3.jpg" class="carousel-img">
-			<button id="prevBtn" class="carousel-btn">&#10094;</button>
-			<button id="nextBtn" class="carousel-btn">&#10095;</button>
-		</div>
-		<div class="dots">
-			<span class="dot active" data-index="0"></span>
-			<span class="dot" data-index="1"></span>
-			<span class="dot" data-index="2"></span>
-		</div>
-	</div>
-</section>
-
-<section id="store" class="section">
-	<h2 class="title">Store</h2>
-	<p>Productos disponibles:</p>
-	<div class="store-grid">
-		<div class="product-card" data-id="sticker" data-price="5.00">
-			<img src="images/store/sticker.jpg">
-			<div class="product-title">Sticker Pack</div>
-			<div class="product-price">S/ 5.00 (15 stickers)</div>
-			<button class="btn" onclick="addToCart('sticker')">Add to cart</button>
-		</div>
-		<div class="product-card" data-id="keychain" data-price="8.00">
-			<img src="images/store/keychain.jpg">
-			<div class="product-title">Keychain</div>
-			<div class="product-price">S/ 8.00</div>
-			<button class="btn" onclick="addToCart('keychain')">Add to cart</button>
-		</div>
-	</div>
+	<h2 class="title">Mi Enfoque Creativo</h2>
+	<p>¡Hola! Soy la creadora detrás de **Sketch Studio**. Mi trabajo representa la intersección entre la **expresión visual y el diseño estructurado**. El arte es mi espacio para la innovación, donde aplico una mentalidad que valora la claridad, la composición y el detalle riguroso en cada proyecto.</p>
+	<p>La creación de cada pieza, ya sea ilustración digital o diseño de productos, es abordada con **dedicación y precisión**. No busco etiquetas ni títulos, sino resultados que reflejen un **estilo propio** cohesionado y bien ejecutado. Esto me permite transformar ideas complejas en diseños estéticos y funcionales.</p>
+	<p style="text-align: center; margin-top: 20px;">*Bienvenido a mi portafolio de arte y diseño.*</p>
 </section>
 
 <section id="contact" class="section">
@@ -78,18 +27,19 @@
 
 	<div class="contact-form-container">
 		<form id="contactForm">
-			<div class="form-group">
+			<div class="form-row">
 				<label for="contactName">Tu Nombre</label>
 				<input type="text" id="contactName" required>
 			</div>
-			<div class="form-group">
+			<div class="form-row">
 				<label for="contactEmail">Tu Correo (ej. mi@email.com)</label>
 				<input type="email" id="contactEmail" required>
 			</div>
-			<div class="form-group">
+			<div class="form-row">
 				<label for="contactMessage">Mensaje / Consulta</label>
 				<textarea id="contactMessage" rows="5" required></textarea>
 			</div>
+			
 			<button type="submit" class="btn contact-btn">Enviar Mensaje</button>
 			<p id="contactMessageFeedback" style="text-align:center; color: var(--primary); font-weight: 600; margin-top: 15px; display: none;"></p>
 		</form>
@@ -100,35 +50,6 @@
 		<p>Instagram: **@sketchstudio** | Correo directo: **sketchstudio@gmail.com**</p>
 	</div>
 </section>
-
-<div class="cart-fab" onclick="toggleCart()">🛒</div>
-<div id="cartOverlay" class="cart-overlay">
-	<div class="cart-header">
-		<strong>Tu carrito</strong>
-		<button onclick="toggleCart()" class="qty-btn">✕</button>
-	</div>
-	<div id="cartItems" class="cart-items"></div>
-	<div class="cart-total" id="cartTotal">Total: S/ 0.00</div>
-	<div class="cart-actions">
-		<button class="btn" onclick="checkout()">Comprar</button>
-		<button class="qty-btn" onclick="clearCart()">Vaciar</button>
-	</div>
-</div>
-
-<div class="chat-fab" onclick="toggleChat()">💬</div>
-<div id="chatWindow" class="chat-window">
-	<div class="chat-header">
-		Chat — Sketch Studio
-		<button onclick="toggleChat()" class="qty-btn">✕</button>
-	</div>
-	<div id="chatBody" class="chat-body">
-		<div class="chat-msg bot">Hola 👋 ¿En qué puedo ayudarte?</div>
-	</div>
-	<div class="chat-input">
-		<input id="chatInput" placeholder="Escribe aquí..." />
-		<button class="btn" onclick="sendMessage()">Enviar</button>
-	</div>
-</div>
 
 </body>
 </html>
