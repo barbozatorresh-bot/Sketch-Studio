@@ -1,25 +1,97 @@
-// CAMBIO DE SECCIONES
-const links = document.querySelectorAll("nav ul li a");
-const pages = document.querySelectorAll(".page");
+/* PALETA */
+:root {
+  --principal: #5F2119;   /* Philippine Brown */
+  --falu: #702220;
+  --quincy: #6C5141;
+  --beaver: #A28C75;
+  --vanilla: #D7C1A8;
+}
 
-links.forEach(link => {
-  link.addEventListener("click", e => {
-    e.preventDefault();
+/* GENERAL */
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background: var(--vanilla);
+  color: var(--principal);
+}
 
-    const id = link.getAttribute("href").substring(1);
+/* HEADER */
+header {
+  background: var(--principal);
+  padding: 20px 0;
+  text-align: center;
+  color: white;
+}
 
-    pages.forEach(p => p.classList.remove("show"));
-    document.getElementById(id).classList.add("show");
-  });
-});
+nav {
+  margin-top: 10px;
+}
 
-// CARRITO
-let total = 0;
-const totalHTML = document.getElementById("total");
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
 
-document.querySelectorAll("button[data-precio]").forEach(btn => {
-  btn.addEventListener("click", () => {
-    total += Number(btn.dataset.precio);
-    totalHTML.textContent = total;
-  });
-});
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* TRANSICIÓN */
+.page {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+  padding: 30px;
+}
+
+.page.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* GALERÍA */
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.galeria img {
+  width: 100%;
+  border: 3px solid var(--principal);
+  border-radius: 6px;
+}
+
+/* STORE */
+.productos {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.item {
+  background: var(--beaver);
+  padding: 15px;
+  border-radius: 8px;
+  width: 160px;
+  text-align: center;
+  color: black;
+}
+
+.item img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+button {
+  background: var(--falu);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
