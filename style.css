@@ -1,97 +1,207 @@
-/* PALETA OFICIAL */
+/* --------------------- */
+/* PALETA PRINCIPAL      */
+/* --------------------- */
 :root {
-    --dark-vanilla: #D7C1A8;
-    --beaver: #A28C75;
-    --quincy: #6C5141;
-    --falu-red: #702220;
-    --phil-brown: #5F2119; /* PRINCIPAL */
+    --pine: #2C3418;
+    --blue: #94A59C;
+    --bone: #DDDFC2;
+    --white: #ffffff;
+    --dark: #1a1a1a;
 }
 
-/* RESETEO */
+/* --------------------- */
+/* RESETEO GENERAL       */
+/* --------------------- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Georgia", serif;
 }
 
 body {
-    background: var(--dark-vanilla);
-    color: var(--phil-brown);
+    background: var(--bone);
+    font-family: "Poppins", sans-serif;
+    color: var(--pine);
+    overflow-x: hidden;
 }
 
-/* HEADER */
+/* --------------------- */
+/* HEADER                */
+/* --------------------- */
 header {
-    text-align: center;
-    background: var(--phil-brown);
-    color: white;
-    padding: 25px 0;
+    width: 100%;
+    padding: 20px 40px;
+    background: var(--pine);
+    color: var(--bone);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header h1 {
-    font-size: 40px;
-    letter-spacing: 2px;
-}
-
-nav a {
-    margin: 0 12px;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-nav a:hover {
-    color: var(--beaver);
-}
-
-/* SECCIONES */
-.section {
-    padding: 40px;
-    border-bottom: 3px solid var(--beaver);
-}
-
-.section h2 {
     font-size: 28px;
+    letter-spacing: 1px;
+}
+
+/* ICONO CARRITO */
+#cart-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+}
+
+#cart-btn img {
+    width: 32px;
+    filter: brightness(0) invert(1);
+}
+
+#cart-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background: crimson;
+    color: white;
+    padding: 3px 7px;
+    border-radius: 50%;
+    font-size: 12px;
+}
+
+/* --------------------- */
+/* MENÚ DEL CARRITO      */
+/* --------------------- */
+#cart-menu {
+    position: fixed;
+    right: -350px;
+    top: 0;
+    height: 100vh;
+    width: 320px;
+    background: var(--white);
+    box-shadow: -4px 0 15px rgba(0,0,0,0.2);
+    padding: 20px;
+    transition: right 0.35s ease;
+    z-index: 999;
+}
+
+#cart-menu.open {
+    right: 0;
+}
+
+#cart-menu h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+    color: var(--pine);
+}
+
+/* ITEMS DEL CARRITO */
+#cart-items {
+    list-style: none;
     margin-bottom: 20px;
 }
 
-/* GALERÍA */
-.galeria {
+.cart-item {
     display: flex;
-    gap: 20px;
-}
-
-.galeria img {
-    width: 250px;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bone);
+    padding: 10px;
     border-radius: 10px;
-    border: 4px solid var(--quincy);
-    transition: transform 0.3s;
+    margin-bottom: 10px;
 }
 
-.galeria img:hover {
-    transform: scale(1.05);
-}
-
-/* STORE */
-.producto {
-    margin-bottom: 25px;
-}
-
-.producto img {
-    width: 200px;
-    border-radius: 12px;
-    border: 3px solid var(--falu-red);
-}
-
-button {
-    padding: 8px 15px;
-    background: var(--phil-brown);
-    color: white;
+.cart-item .actions button {
+    margin-left: 5px;
     border: none;
+    background: var(--blue);
+    color: var(--pine);
+    padding: 4px 8px;
     border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.cart-item .actions button:hover {
+    background: var(--pine);
+    color: var(--bone);
+}
+
+/* TOTAL */
+.cart-total-box {
+    font-size: 18px;
+    padding-top: 10px;
+    border-top: 2px solid var(--pine);
+}
+
+/* --------------------- */
+/* GALERÍA DE PRODUCTOS  */
+/* --------------------- */
+.products {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    padding: 40px;
+}
+
+.product-card {
+    background: var(--white);
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    overflow: hidden;
+    transition: transform 0.25s ease;
     cursor: pointer;
 }
 
-button:hover {
-    background: var(--quincy);
+.product-card:hover {
+    transform: translateY(-6px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.product-card .info {
+    padding: 15px 20px;
+}
+
+.product-card .info h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.product-card .info p {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: var(--dark);
+}
+
+.add-to-cart {
+    width: 100%;
+    padding: 12px;
+    background: var(--pine);
+    color: var(--bone);
+    text-align: center;
+    border: none;
+    border-radius: 0 0 14px 14px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.25s ease;
+}
+
+.add-to-cart:hover {
+    background: #1e2610;
+}
+
+/* --------------------- */
+/* TRANSICIONES EXTRA    */
+/* --------------------- */
+.fade-in {
+    animation: fade 0.5s ease forwards;
+}
+
+@keyframes fade {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
