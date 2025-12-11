@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sketch Studio</title>
 
-  <!-- Fuente cursiva estilo Berta Melanie -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap">
-  <!-- Fuente general -->
+  <!-- Tipografía -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap">
 
   <!-- Estilos -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- JS -->
+  <script src="script.js" defer></script>
 </head>
 <body>
 
@@ -24,19 +25,19 @@
 
 <!-- MENU -->
 <div class="menu">
-  <span onclick="toggle('about')">Sobre mí</span>
-  <span onclick="toggle('gallery')">Galería</span>
-  <span onclick="toggle('store')">Store</span>
-  <span onclick="toggle('contact')">Contacto</span>
+  <span onclick="toggleSection('about')">Sobre mí</span>
+  <span onclick="toggleSection('gallery')">Galería</span>
+  <span onclick="toggleSection('store')">Store</span>
+  <span onclick="toggleSection('contact')">Contacto</span>
 </div>
 
 <!-- SOBRE MÍ -->
-<div id="about" class="section" style="display:block; opacity:1;">
+<section id="about" class="section" style="display:block; opacity:1;">
   <p>Hola, soy la artista detrás de Sketch Studio. Bienvenido a mi mundo creativo.</p>
-</div>
+</section>
 
 <!-- GALERÍA -->
-<div id="gallery" class="section">
+<section id="gallery" class="section">
   <h2 class="title">Gallery</h2>
 
   <div class="gallery-container">
@@ -55,10 +56,10 @@
       <span class="dot" data-index="2"></span>
     </div>
   </div>
-</div>
+</section>
 
 <!-- STORE -->
-<div id="store" class="section">
+<section id="store" class="section">
   <h2 class="title">Store</h2>
   <p>Productos disponibles:</p>
 
@@ -77,16 +78,17 @@
       <button class="btn" onclick="addToCart('keychain')">Add to cart</button>
     </div>
   </div>
-</div>
+</section>
 
 <!-- CONTACTO -->
-<div id="contact" class="section">
+<section id="contact" class="section">
   <p>Correo: sketchstudio@gmail.com<br>Instagram: @sketchstudio</p>
-</div>
+</section>
 
-<!-- CARRITO -->
+<!-- BOTÓN CARRITO -->
 <div class="cart-fab" onclick="toggleCart()">🛒</div>
 
+<!-- CARRITO -->
 <div id="cartOverlay" class="cart-overlay">
   <div class="cart-header">
     <strong>Tu carrito</strong>
@@ -122,6 +124,5 @@
   </div>
 </div>
 
-<script src="script.js"></script>
 </body>
 </html>
